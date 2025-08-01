@@ -1,0 +1,230 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #111;
+  color: #f1f1f1;
+  line-height: 1.6;
+}
+
+header, footer {
+  background: #000;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+header h1 {
+  font-weight: 300;
+  font-size: 3rem;
+  margin: 0;
+}
+
+.slogan {
+  font-weight: 400;
+  letter-spacing: 0.3rem;
+  color: #aaa;
+  margin: 1rem 0 2rem;
+  font-size: 1.25rem;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  margin: 0 1rem;
+}
+
+.hero {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1rem;
+  overflow: hidden;
+}
+
+.hero-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.slogan-hero {
+  font-size: 1.75rem;
+  font-weight: 300;
+  letter-spacing: 0.4rem;
+  margin-top: 1rem;
+}
+
+section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+section h2 {
+  font-weight: 700;
+  font-size: 2.75rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #444;
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+
+.courses {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.course {
+  background: #222;
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 400px;
+}
+
+.course img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.course h3 {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.course p {
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 1.2rem;
+  flex-grow: 1;
+}
+
+.course-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.buy-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #0af;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 1rem;
+  font-weight: 700;
+  max-width: 240px;
+  width: 100%;
+  text-align: center;
+  transition: background 0.3s, transform 0.3s;
+  font-size: 1rem;
+  user-select: none;
+}
+
+.buy-button:hover {
+  background: #08c;
+  transform: scale(1.05);
+}
+
+.more-info {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  background-color: #444;
+  color: #ddd;
+  text-decoration: none;
+  border-radius: 0.7rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+  width: max-content;
+  white-space: nowrap;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.more-info:hover {
+  background: #333;
+  transform: scale(1.05);
+}
+
+.proximamente-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #444;
+  color: #ddd;
+  text-decoration: none;
+  border-radius: 1rem;
+  font-weight: 700;
+  transition: background 0.3s, transform 0.3s;
+  width: 100%;
+  text-align: center;
+}
+
+.proximamente-btn:hover {
+  background: #555;
+  transform: scale(1.05);
+}
+
+.contact {
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact p {
+  margin-bottom: 1rem;
+}
+
+.contact a {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #0af;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 1rem;
+  font-weight: 700;
+  transition: background 0.3s;
+}
+
+.contact a:hover {
+  background: #08c;
+}
+
+footer p {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .courses {
+    grid-template-columns: 1fr;
+  }
+}
