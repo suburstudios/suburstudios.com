@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wwise Fundamentals - Suburbio Studios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: #f1f1f1;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    header {
+      background: #000;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      font-weight: 300;
+      font-size: 3rem;
+      margin: 0;
+      color: #f1f1f1;
+    }
+
+    .slogan {
+      font-weight: 400;
+      letter-spacing: 0.3rem;
+      color: #aaa;
+      margin: 1rem 0 2rem;
+      font-size: 1.25rem;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      margin: 0 1rem;
+    }
+
+    .hero {
+      background: url('banner.jpg') center/cover no-repeat;
+      height: 50vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      background: rgba(0,0,0,0.5);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: 0;
+    }
+
+    .hero .slogan-hero {
+      font-size: 1.75rem;
+      font-weight: 300;
+      letter-spacing: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .course-content {
+      max-width: 1000px;
+      margin: auto;
+      padding: 4rem 2rem;
+      text-align: left;
+    }
+
+    .course-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #444;
+      padding-bottom: 0.5rem;
+    }
+
+    .course-description {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .course-video {
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .course-video iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .buy-button {
+      display: inline-block;
+      background-color: #0af;
+      color: #fff;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 1rem;
+      font-weight: 700;
+      text-align: center;
+      transition: background 0.3s;
+      cursor: pointer;
+      border: none;
+      margin-top: 2rem;
+    }
+
+    .buy-button:hover {
+      background-color: #08c;
+    }
+
+    #formularioCompra {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+      color: #111;
+      text-align: center;
+      border-radius: 10px;
+      z-index: 1000;
+    }
+
+    #formularioCompra input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    #formularioCompra button {
+      background-color: #0af;
+      color: #fff;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 1rem;
+      font-weight: 700;
+      text-align: center;
+      transition: background 0.3s;
+      cursor: pointer;
+      border: none;
+    }
+
+    #formularioCompra button:hover {
+      background-color: #08c;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #000;
+      color: #aaa;
+      margin-top: 4rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Suburbio Studios</h1>
+    <p class="slogan">Make New Noise</p>
+    <nav>
+      <a href="https://suburstudios.com">Inicio</a>
+      <a href="https://cursos.suburstudios.com/">Cursos</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Wwise Fundamentals</h1>
+    <p class="slogan-hero">Curso esencial de Wwise: integración de audio, diseño sonoro y certificación profesional para videojuegos.</p>
+  </div>
+
+  <div class="course-content">
+    <h2>¿Por qué tomar este curso?</h2>
+    <div class="course-description">
+      <p>Aprende a diseñar sonido interactivo para videojuegos con Wwise. Desde lo básico hasta técnicas avanzadas, este curso está diseñado para que domines el motor de audio más utilizado en la industria del videojuego.</p>
+    </div>
+
+    <div class="course-video">
+      <iframe src="https://www.youtube.com/embed/_tu7XqfwNiE" title="Presentación del curso Wwise Fundamentals" allowfullscreen></iframe>
+    </div>
+
+    <div style="text-align: center;">
+      <button class="buy-button" onclick="abrirPopup()">Comprar ahora!</button>
+    </div>
+  </div>
+
+  <div id="formularioCompra">
+    <h3>Completa tu compra</h3>
+    <form action="/crear_sesion_checkout.php" method="POST">
+      <input type="email" name="email" placeholder="Introduce tu correo" required>
+      <button type="submit">Pagar ahora</button>
+    </form>
+    <button onclick="cerrarPopup()">Cerrar</button>
+  </div>
+
+
+  <footer>
+    <p>&copy; 2025 Suburbio Studios. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function abrirPopup() {
+      document.getElementById("formularioCompra").style.display = "block";
+    }
+
+    function cerrarPopup() {
+      document.getElementById("formularioCompra").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
