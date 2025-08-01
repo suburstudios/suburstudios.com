@@ -1,0 +1,7 @@
+# Redirige todo tráfico HTTP a HTTPS (si tienes SSL configurado)
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Asegura que el archivo index.html se cargue por defecto
+DirectoryIndex index.html

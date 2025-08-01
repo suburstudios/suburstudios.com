@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suburbio Studios - Cursos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.png" type="image/png">
+
+  <!-- Hotmart checkout widget -->
+  <script type="text/javascript">
+    function importHotmart(){
+      var importedScript = document.createElement('script');
+      importedScript.src = 'https://static.hotmart.com/checkout/widget.min.js';
+      document.head.appendChild(importedScript);
+      var linkElem = document.createElement('link');
+      linkElem.rel = 'stylesheet';
+      linkElem.type = 'text/css';
+      linkElem.href = 'https://static.hotmart.com/css/hotmart-fb.min.css';
+      document.head.appendChild(linkElem);
+    }
+    importHotmart();
+  </script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #111;
+      color: #f1f1f1;
+      line-height: 1.6;
+    }
+    header, footer {
+      background: #000;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    header h1 {
+      font-weight: 300;
+      font-size: 3rem;
+    }
+    .slogan {
+      font-weight: 400;
+      letter-spacing: 0.3rem;
+      color: #aaa;
+      margin: 1rem 0 2rem;
+      font-size: 1.25rem;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      margin: 0 1rem;
+    }
+    .hero {
+      position: relative;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem;
+      overflow: hidden;
+    }
+    .hero-bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    .hero-content {
+      z-index: 1;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1rem;
+      border-radius: 0.5rem;
+    }
+    .hero .slogan-hero {
+      font-size: 1.75rem;
+      font-weight: 300;
+      letter-spacing: 0.4rem;
+      margin-top: 1rem;
+    }
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    section h2 {
+      font-weight: 700;
+      font-size: 2.75rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #444;
+      padding-bottom: 0.5rem;
+      text-align: center;
+    }
+    .courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .course {
+      background: #222;
+      padding: 1rem;
+      border-radius: 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 400px;
+    }
+    .course img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+    .course h3 {
+      font-size: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .course p {
+      font-size: 1rem;
+      color: #aaa;
+      margin-bottom: 1.2rem;
+      flex-grow: 1;
+    }
+    .course-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .buy-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background-color: #0af;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 1rem;
+      font-weight: 700;
+      max-width: 240px;
+      width: 100%;
+      text-align: center;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 170, 255, 0.2);
+      font-size: 1rem;
+    }
+    .buy-button:hover {
+      background: #08c;
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px rgba(0, 136, 204, 0.3);
+    }
+    /* Eliminado el ::before que ponía el carrito */
+    .more-info {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      background-color: #444;
+      color: #ddd;
+      text-decoration: none;
+      border-radius: 0.7rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-align: center;
+      white-space: nowrap;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .more-info:hover {
+      background: #333;
+      transform: scale(1.05);
+    }
+    .proximamente-btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background-color: #444;
+      color: #ddd;
+      text-decoration: none;
+      border-radius: 1rem;
+      font-weight: 700;
+      transition: background 0.3s, transform 0.3s;
+      width: 100%;
+      text-align: center;
+    }
+    .proximamente-btn:hover {
+      background: #555;
+      transform: scale(1.05);
+    }
+    .contact {
+      text-align: center;
+      margin-top: 4rem;
+      margin-bottom: 1.5rem;
+    }
+    .contact p {
+      margin-bottom: 1rem;
+    }
+    .contact a {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background-color: #0af;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 1rem;
+      font-weight: 700;
+      transition: background 0.3s;
+    }
+    .contact a:hover {
+      background: #08c;
+    }
+    footer p {
+      font-size: 0.9rem;
+    }
+    @media (max-width: 768px) {
+      .courses {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Suburbio Studios</h1>
+    <div class="slogan">MAKE NEW NOISE</div>
+    <nav>
+      <a href="https://suburstudios.com">Inicio</a>
+      <a href="#cursos">Cursos</a>
+      <a href="https://docs.google.com/forms/d/1LK2Yl3Xdtbk-kLGKyRvqiJZak1pYk5XQBoExB3215v8">Contacto</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <video class="hero-bg-video" autoplay muted loop>
+      <source src="https://suburstudios.com/cursos/videos/cursos_video_background.mp4" type="video/mp4" />
+      Tu navegador no soporta la etiqueta de video.
+    </video>
+    <div class="hero-content">
+      <h1>Nuestros cursos</h1>
+      <div class="slogan-hero">Aprende a tu propio ritmo</div>
+    </div>
+  </div>
+
+  <section id="cursos">
+    <h2>Cursos Disponibles</h2>
+    <div class="courses">
+      <div class="course">
+        <img src="images/wwise_fundamentals_thumbnail.png" alt="Wwise Fundamentals" />
+        <div class="course-content" style="display: flex; flex-direction: column; flex-grow: 1;">
+          <h3>Wwise Fundamentals</h3>
+          <p>Aprende los fundamentos de la integración de audio interactivo en videojuegos con Wwise.</p>
+          <div class="course-buttons">
+            <a
+              href="https://pay.hotmart.com/J99648559J?checkoutMode=2"
+              class="hotmart-fb hotmart__button-checkout buy-button"
+              title="Comprar ahora Wwise Fundamentals"
+            >
+              Comprar ahora
+            </a>
+            <a
+              class="more-info"
+              href="https://hotmart.com/es/marketplace/productos/wwise-fundamentals/J99648559J?sck=HOTMART_MEM_CA&off=t0e46xuw"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Más información
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="course">
+        <img src="images/interactive_music_thumbnail.png" alt="Wwise Interactive Music" />
+        <div class="course-content" style="display: flex; flex-direction: column; flex-grow: 1;">
+          <h3>Wwise Interactive Music</h3>
+          <p>Creación de música interactiva para videojuegos.</p>
+          <a href="#" class="proximamente-btn">Próximamente</a>
+        </div>
+      </div>
+
+      <div class="course">
+        <img src="images/wwise_performance.png" alt="Performance Optimization" />
+        <div class="course-content" style="display: flex; flex-direction: column; flex-grow: 1;">
+          <h3>Performance Optimization & Mobile Considerations</h3>
+          <p>Optimización del rendimiento en dispositivos móviles.</p>
+          <a href="#" class="proximamente-btn">Próximamente</a>
+        </div>
+      </div>
+
+      <div class="course">
+        <img src="images/wwise_unity_integration.png" alt="Wwise Unity Integration" />
+        <div class="course-content" style="display: flex; flex-direction: column; flex-grow: 1;">
+          <h3>Wwise Unity Integration</h3>
+          <p>Integración avanzada de Wwise con Unity.</p>
+          <a href="#" class="proximamente-btn">Próximamente</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="contact">
+      <p>Si estás interesado en nuestros servicios o quieres más información, ¡no dudes en ponerte en contacto!</p>
+      <a href="https://docs.google.com/forms/d/1LK2Yl3Xdtbk-kLGKyRvqiJZak1pYk5XQBoExB3215v8">Contáctanos</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Suburbio Studios. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
