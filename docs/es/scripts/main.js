@@ -1,144 +1,80 @@
-// main.js - Carrusel y menú (versión corregida y robusta)
+// main.js - menú y carrusel (no duplicados, wrap al final -> inicio)
 
-// --- MENÚ DESPLEGABLE (móvil) ---
+// menú móvil toggle
 const menuToggle = document.querySelector('.menu-toggle');
 const menu = document.querySelector('nav .menu');
-
 if (menuToggle && menu) {
   menuToggle.addEventListener('click', () => {
     menu.classList.toggle('active');
   });
 }
 
-// --- CARRUSEL ---
-const track = document.querySelector('.carousel-track');
-const prevButton = document.querySelector('.carousel-button.prev');
-const nextButton = document.querySelector('.carousel-button.next');
+// actualiza el año en footer
+const yearSpan = document.getElementById('year');
+if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-// Si no hay carrusel, salimos
-if (!track || !prevButton || !nextButton) {
-  // No hay carrusel en la página
-  console.warn('Carrusel no inicializado: faltan elementos DOM.');
-} else {
-  // Helpers
-  const getItems = () => Array.from(track.children);
-  const getGapPx = () => {
-    const style = window.getComputedStyle(track);
-    // 'gap' suele devolver "16px" o similar; parseFloat manejará "0" si no existe
-    return parseFloat(style.gap) || 0;
-  };
+// Carrusel
+(function () {
+  const track = document.querySelector('.carousel-track');
+  if (!track) return;
 
-  // Decide cuántos elementos se muestran según ancho (puedes ajustar breakpoints)
+  const items = Array.from(track.children);
+  const prevBtn = document.querySelector('.carousel-button.prev');
+  const nextBtn = document.querySelector('.carousel-button.next');
+
+  let index = 0;
+
   function getVisibleCount() {
-    const w = window.innerWidth;
-    if (w < 768) return 1;
-    if (w < 1024) return 2;
-    return 3;
+    // calcula cuántos caben en el contenedor según ancho
+    const containerWidth = track.parentElement.clientWidth;
+    const item = items[0];
+    if (!item) return 1;
+    const style = getComputedStyle(item);
+    const gap = parseFloat(getComputedStyle(track).gap) || 12;
+    const itemWidth = item.getBoundingClientRect().width + gap;
+    const visible = Math.max(1, Math.floor((containerWidth + gap) / itemWidth));
+    return visible;
   }
 
-  let items = getItems();
-  let visibleCount = getVisibleCount();
-  let currentIndex = 0;
-
-  function computeItemStep() {
-    // recalcula el ancho efectivo de cada item (incluye gap)
-    if (!items[0]) return 0;
-    const itemWidth = items[0].getBoundingClientRect().width;
-    const gap = getGapPx();
-    return itemWidth + gap;
+  function update() {
+    const gap = parseFloat(getComputedStyle(track).gap) || 12;
+    const itemRect = items[0].getBoundingClientRect();
+    const itemWidth = itemRect.width + gap;
+    const visible = getVisibleCount();
+    const maxIndex = Math.max(0, items.length - visible);
+    // clamp index within 0..maxIndex, but if index > maxIndex wrap to 0
+    if (index > maxIndex) index = 0;
+    const translateX = -index * itemWidth;
+    track.style.transform = `translateX(${translateX}px)`;
   }
 
-  function updateButtonsState(maxIndex) {
-    // Si hay menos o igual items visibles, desactivamos botones
-    if (items.length <= visibleCount) {
-      prevButton.disabled = true;
-      nextButton.disabled = true;
-      prevButton.classList.add('disabled');
-      nextButton.classList.add('disabled');
-    } else {
-      prevButton.disabled = false;
-      nextButton.disabled = false;
-      prevButton.classList.remove('disabled');
-      nextButton.classList.remove('disabled');
-    }
+  // botones next / prev: cuando llegues al final, vuelve al inicio (wrap)
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const visible = getVisibleCount();
+      const maxIndex = Math.max(0, items.length - visible);
+      index = (index < maxIndex) ? index + 1 : 0;
+      update();
+    });
+  }
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      const visible = getVisibleCount();
+      const maxIndex = Math.max(0, items.length - visible);
+      index = (index > 0) ? index - 1 : maxIndex;
+      update();
+    });
   }
 
-  function updateCarousel(animate = true) {
-    // recalculamos por si ha cambiado layout/DOM
-    items = getItems();
-    visibleCount = getVisibleCount();
-
-    const step = computeItemStep();
-    const maxIndex = Math.max(0, items.length - visibleCount);
-
-    // clamp currentIndex
-    if (currentIndex > maxIndex) currentIndex = maxIndex;
-    if (currentIndex < 0) currentIndex = 0;
-
-    // animación opcional
-    track.style.transition = animate ? 'transform 0.45s ease' : 'none';
-    track.style.transform = `translateX(${-currentIndex * step}px)`;
-
-    updateButtonsState(maxIndex);
-  }
-
-  // Botones: avance con wrap-around (si llegas al final vuelve al principio)
-  nextButton.addEventListener('click', () => {
-    items = getItems();
-    visibleCount = getVisibleCount();
-    const maxIndex = Math.max(0, items.length - visibleCount);
-
-    if (items.length <= visibleCount) {
-      // nada que hacer
-      return;
-    }
-
-    if (currentIndex < maxIndex) {
-      currentIndex++;
-    } else {
-      // wrap to start
-      currentIndex = 0;
-    }
-    updateCarousel();
-  });
-
-  prevButton.addEventListener('click', () => {
-    items = getItems();
-    visibleCount = getVisibleCount();
-    const maxIndex = Math.max(0, items.length - visibleCount);
-
-    if (items.length <= visibleCount) {
-      return;
-    }
-
-    if (currentIndex > 0) {
-      currentIndex--;
-    } else {
-      // wrap to last "page"
-      currentIndex = maxIndex;
-    }
-    updateCarousel();
-  });
-
-  // Reajusta al redimensionar (debounce ligero)
-  let resizeTimeout;
+  // recalcula en resize
+  let resizeTimer;
   window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      // evitar saltos: recalcula sin animación, luego con animación
-      updateCarousel(false);
-      // forzar reflow y luego permitir animación en futuras actualizaciones
-      void track.offsetWidth;
-      updateCarousel(true);
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      update();
     }, 120);
   });
 
-  // Inicializar
-  updateCarousel(false);
-
-  // Opcional: soporte teclado (flechas)
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') nextButton.click();
-    if (e.key === 'ArrowLeft') prevButton.click();
-  });
-}
+  // init
+  setTimeout(update, 50);
+})();
