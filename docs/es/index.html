@@ -9,34 +9,40 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="/favicon.png" type="image/png">
 
-  <!-- Font Awesome Kit (funciona seguro) -->
-  <script src="https://kit.fontawesome.com/tuKitID.js" crossorigin="anonymous"></script>
-
   <style>
-    body { margin: 0; padding: 0; background: #111; color: #f1f1f1; font-family: 'Montserrat', sans-serif; }
+    /* Reset / base */
+    :root { --bg:#111; --card:#222; --muted:#aaa; --accent:#e63946; --green:#14a800; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 0; background: var(--bg); color: #f1f1f1; font-family: 'Montserrat', sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    a { color: inherit; }
+
     header, footer { background: #000; text-align: center; padding: 2rem 1rem; position: relative; }
     header h1 { font-weight: 300; font-size: 3rem; margin: 0; }
-    .slogan { font-weight: 400; letter-spacing: 0.3rem; color: #aaa; margin: 1rem 0 2rem; font-size: 1.25rem; }
-    nav a { color: #fff; text-decoration: none; font-weight: 700; margin: 0 1rem; }
+    .slogan { font-weight: 400; letter-spacing: 0.3rem; color: var(--muted); margin: 1rem 0 2rem; font-size: 1.25rem; }
+    nav { margin-top: 0.75rem; }
+    nav a { color: #fff; text-decoration: none; font-weight: 700; margin: 0 1rem; font-size: 0.95rem; }
 
-    /* Iconos de redes sociales */
-    .social-icons {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
+    /* SVG social icons (header & footer) */
+    .social-icons,
+    .social-icons-footer {
       display: flex;
       gap: 0.75rem;
+      align-items: center;
+      justify-content: center;
     }
-    .social-icons a {
-      color: #fff;
-      font-size: 1.3rem;
-      transition: color 0.3s ease, transform 0.3s ease;
+    .social-icons { position: absolute; top: 1rem; right: 1rem; }
+    .social-icons a svg,
+    .social-icons-footer a svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+      fill: #fff;
+      transition: transform .18s ease, fill .18s ease;
     }
-    .social-icons a:hover {
-      color: #e63946;
-      transform: scale(1.2);
-    }
+    .social-icons a:hover svg,
+    .social-icons-footer a:hover svg { transform: scale(1.15); fill: var(--accent); }
 
+    /* Hero */
     .hero {
       position: relative;
       height: 80vh;
@@ -48,30 +54,9 @@
       padding: 0 1rem;
       overflow: hidden;
     }
-
-    .hero video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      background: rgba(0,0,0,0.5);
-      padding: 1rem;
-      border-radius: 0.5rem;
-      margin: 0;
-    }
-    .hero .slogan-hero {
-      font-size: 1.75rem;
-      font-weight: 300;
-      letter-spacing: 0.4rem;
-      margin-top: 1rem;
-    }
+    .hero video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.5; }
+    .hero h1 { font-size: 2.5rem; background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 0.5rem; margin: 0; }
+    .hero .slogan-hero { font-size: 1.75rem; font-weight: 300; letter-spacing: 0.4rem; margin-top: 1rem; color: var(--muted); }
 
     section { padding: 4rem 2rem; max-width: 1200px; margin: auto; }
     section h2 {
@@ -85,122 +70,139 @@
 
     /* Servicios */
     .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-    .service { background: #222; padding: 1rem; border-radius: 1rem; text-align: center; }
-    .service img { width: 100%; height: 150px; object-fit: cover; border-radius: 0.5rem; }
+    .service { background: var(--card); padding: 1rem; border-radius: 1rem; text-align: center; }
+    .service img { width: 100%; height: 150px; object-fit: cover; border-radius: 0.5rem; display:block; }
+
+    /* Intro servicios */
+    .intro-servicios { text-align: center; color: #ddd; line-height: 1.4; }
 
     /* Botón comparaciones */
     .btn-comparaciones {
       display: inline-block;
       padding: 0.8rem 1.5rem;
-      background-color: #e63946;
+      background-color: var(--accent);
       color: #fff;
-      font-weight: bold;
+      font-weight: 700;
       text-decoration: none;
       border-radius: 8px;
-      transition: background 0.3s ease, transform 0.3s ease;
-      font-size: 1.1rem;
-      animation: pulse 2s infinite;
+      transition: background 0.25s ease, transform 0.2s ease;
+      font-size: 1.05rem;
+      animation: pulse 2.2s infinite;
     }
+    .btn-comparaciones:hover { background-color: #c82333; transform: translateY(-3px) scale(1.03); }
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
 
-    .btn-comparaciones:hover {
-      background-color: #c82333;
-      transform: scale(1.05);
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
+    /* Proyectos texto centrado */
+    .proyectos-destacados { text-align: center; font-size: 1.05rem; color: #ccc; margin-bottom: 1.25rem; }
 
     /* Carrusel */
     .carousel { position: relative; overflow: hidden; margin: 2rem 0; }
-    .carousel-track { display: flex; transition: transform 0.5s ease; }
+    .carousel-track { display: flex; transition: transform 0.5s ease; will-change: transform; }
     .carousel-item { flex: 0 0 30%; margin: 0 10px; }
-    .carousel-item iframe { width: 100%; height: 180px; border: none; border-radius: 0.5rem; }
-    .carousel-button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      border: none;
-      color: #fff;
-      font-size: 2rem;
-      padding: 0.5rem;
-      cursor: pointer;
-      z-index: 10;
-    }
-    .carousel-button.prev { left: 0; }
-    .carousel-button.next { right: 0; }
+    .carousel-item iframe { width: 100%; height: 180px; border: none; border-radius: 0.5rem; display:block; }
+    .carousel-button { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.45); border: none; color: #fff; font-size: 1.6rem; padding: 0.5rem 0.75rem; cursor: pointer; z-index: 10; border-radius: 6px; }
+    .carousel-button.prev { left: 8px; }
+    .carousel-button.next { right: 8px; }
 
-    /* Sección Postproducción - Grid */
+    /* Postgrid */
     .postgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
-    .postgrid iframe { width: 100%; height: 200px; border: none; border-radius: 0.5rem; }
+    .postgrid iframe { width: 100%; height: 200px; border: none; border-radius: 0.5rem; display:block; }
 
+    /* Contact / Upwork card */
     .contact { text-align: center; margin-top: 4rem; }
     .contact a { display: inline-block; margin-top: 1rem; padding: 1rem 2rem; background-color: #0af; color: #fff; text-decoration: none; border-radius: 1rem; font-weight: 700; }
 
-    footer p { font-size: 0.9rem; margin:0; }
-    footer .social-icons-footer {
-      margin-top: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-    footer .social-icons-footer a { color: #fff; font-size: 1.3rem; transition: color 0.3s ease, transform 0.3s ease; }
-    footer .social-icons-footer a:hover { color: #e63946; transform: scale(1.2); }
+    /* Footer social */
+    footer p { font-size: 0.9rem; margin: 0; color: #ccc; }
+    .social-icons-footer { margin-top: 0.75rem; display:flex; justify-content:center; gap:1rem; }
 
+    /* Responsive touches */
+    @media (max-width:900px) {
+      .carousel-item { flex: 0 0 45%; }
+      .hero { height: 60vh; }
+    }
+    @media (max-width:600px) {
+      header h1 { font-size: 2rem; }
+      .social-icons { top: 0.6rem; right: 0.6rem; }
+      .carousel-item { flex: 0 0 90%; }
+    }
+
+    /* Accessibility helper (visually hidden) */
+    .sr-only {
+      position: absolute !important;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
   </style>
 
-  <!-- Metricool tracking -->
+  <!-- Metricool tracking (correct placement) -->
   <script>
     function loadScript(a){
       var b=document.getElementsByTagName("head")[0],
           c=document.createElement("script");
-      c.type="text/javascript",
-      c.src="https://tracker.metricool.com/resources/be.js",
-      c.onreadystatechange=a,
-      c.onload=a,
-      b.appendChild(c)
+      c.type="text/javascript";
+      c.src="https://tracker.metricool.com/resources/be.js";
+      c.onreadystatechange=a;
+      c.onload=a;
+      b.appendChild(c);
     }
     loadScript(function(){
-      beTracker.t({hash:"eba2b16ed73a61b8af94d17c05a24ec"})
+      if (typeof beTracker !== 'undefined' && beTracker.t) {
+        beTracker.t({hash:"eba2b16ed73a61b8af94d17c05a24ec"});
+      }
     });
   </script>
 </head>
 <body>
   <header>
     <h1>Suburbio Studios</h1>
-    <div class="slogan">MAKE NEW NOISE</div>
+    <div class="slogan">MAKE NEW NOISE</div>
+
     <nav>
       <a href="#servicios">Servicios</a>
-      <a href="https://mixmaster.suburstudios.com/">Proyectos</a>
-      <a href="https://cursos.suburstudios.com">Cursos</a>
-      <a href="https://forms.gle/y9RZXQr6BwukTivCA">Contacto</a>
+      <a href="https://mixmaster.suburstudios.com/" target="_blank" rel="noopener noreferrer">Proyectos</a>
+      <a href="https://cursos.suburstudios.com" target="_blank" rel="noopener noreferrer">Cursos</a>
+      <a href="https://forms.gle/y9RZXQr6BwukTivCA" target="_blank" rel="noopener noreferrer">Contacto</a>
     </nav>
 
-    <!-- Iconos de redes sociales -->
-    <div class="social-icons">
-      <a href="https://www.instagram.com/suburbiostudio" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@suburbiostudio" target="_blank"><i class="fab fa-tiktok"></i></a>
-      <a href="https://www.facebook.com/suburstudios" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://www.youtube.com/channel/UCsItmwJBywstgw_Twjzrq-A" target="_blank"><i class="fab fa-youtube"></i></a>
+    <!-- Iconos de redes sociales (SVG inline) -->
+    <div class="social-icons" aria-label="Redes sociales">
+      <a href="https://www.instagram.com/suburbiostudio" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.2A4.8 4.8 0 1 0 16.8 13 4.8 4.8 0 0 0 12 8.2zM18.5 6.3a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1z"/></svg>
+        <span class="sr-only">Instagram</span>
+      </a>
+
+      <a href="https://www.tiktok.com/@suburbiostudio" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17 4.5v5.2a3.8 3.8 0 1 1-3.8-3.8v2.7A1.1 1.1 0 0 0 14 10a6 6 0 1 0 3 5.2V4.5z"/></svg>
+        <span class="sr-only">TikTok</span>
+      </a>
+
+      <a href="https://www.facebook.com/suburstudios" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15 3h3v4h-3v14h-4V7H9V3h3V1.8C12 0.8 12.7 0 14 0h1v3z"/></svg>
+        <span class="sr-only">Facebook</span>
+      </a>
+
+      <a href="https://www.youtube.com/channel/UCsItmwJBywstgw_Twjzrq-A" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M23 7.1a3 3 0 0 0-2.1-2.1C18.7 4 12 4 12 4s-6.7 0-8.9.9A3 3 0 0 0 .9 7v10a3 3 0 0 0 2.1 2.1C5.3 20 12 20 12 20s6.7 0 8.9-.9A3 3 0 0 0 23 17V7.1zM10 15.5V8.5l6 3.5-6 3.5z"/></svg>
+        <span class="sr-only">YouTube</span>
+      </a>
     </div>
   </header>
 
   <div class="hero">
-    <video autoplay loop muted>
+    <video autoplay loop muted playsinline>
       <source src="https://suburstudios.com/videos/web_ppca_video.mp4" type="video/mp4">
       Tu navegador no soporta la etiqueta de video.
     </video>
     <h1>Producción musical, diseño sonoro y postproducción a otro nivel</h1>
-    <div class="slogan-hero">MAKE NEW NOISE</div>
+    <div class="slogan-hero">MAKE NEW NOISE</div>
   </div>
 
   <!-- Sección Servicios -->
   <section id="servicios">
     <h2>Servicios</h2>
-    <p class="intro-servicios" style="text-align:center;">
+    <p class="intro-servicios">
       ¿Perteneces a una banda o eres un artista solista y necesitas 
       mezcla y masterización online para tu música? 
       Si buscas un sonido potente, claro y profesional, aquí tienes tu estudio.
@@ -208,21 +210,23 @@
     
     <div class="services">
       <div class="service">
-        <a href="https://docs.google.com/forms/d/1LK2Yl3Xdtbk-kLGKyRvqiJZak1pYk5XQBoExB3215v8/viewform?edit_requested=true" target="_blank">
+        <a href="https://docs.google.com/forms/d/1LK2Yl3Xdtbk-kLGKyRvqiJZak1pYk5XQBoExB3215v8/viewform?edit_requested=true" target="_blank" rel="noopener noreferrer">
           <img src="images/music_production.jpg" alt="Producción musical">
           <h3>Producción Musical</h3>
           <p>Composición, arreglos, beatmaking y dirección musical adaptada a tu visión artística.</p>
         </a>
       </div>
+
       <div class="service">
-        <a href="https://docs.google.com/forms/d/1LK2Yl3Xdtbk-kLGKyRvqiJZak1pYk5XQBoExB3215v8/viewform?edit_requested=true" target="_blank">
+        <a href="https://docs.google.com/forms/d/1LK2Yl3Xdtbk-kLGKyRvqiJZak1pYk5XQBoExB3215v8/viewform?edit_requested=true" target="_blank" rel="noopener noreferrer">
           <img src="images/mix_master.jpg" alt="Mezcla y Mastering">
           <h3>Mezcla y Mastering</h3>
           <p>Optimiza tu sonido para competir en todas las plataformas con claridad, pegada y balance.</p>
         </a>
       </div>
+
       <div class="service">
-        <a href="https://docs.google.com/forms/d/1LK2Yl3Xdtbk-kLGKyRvqiJZak1pYk5XQBoExB3215v8/viewform?edit_requested=true" target="_blank">
+        <a href="https://docs.google.com/forms/d/1LK2Yl3Xdtbk-kLGKyRvqiJZak1pYk5XQBoExB3215v8/viewform?edit_requested=true" target="_blank" rel="noopener noreferrer">
           <img src="images/postproduction.jpg" alt="Postproducción de Sonido">
           <h3>Postproducción de Sonido</h3>
           <p>Edición, diseño sonoro, foley, ambientes y mezcla final para cine, series y videojuegos.</p>
@@ -233,8 +237,8 @@
 
   <!-- Upwork -->
   <section id="upwork" style="text-align:center; padding:3rem 1rem;">
-    <div style="max-width: 400px; margin: auto; border: 2px solid #14a800; border-radius: 16px; overflow: hidden; background: #000; box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
-      <div style="background:#14a800; color:white; padding:15px; display:flex; align-items:center; gap:10px; justify-content:center;">
+    <div style="max-width: 400px; margin: auto; border: 2px solid var(--green); border-radius: 16px; overflow: hidden; background: #000; box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
+      <div style="background:var(--green); color:white; padding:15px; display:flex; align-items:center; gap:10px; justify-content:center;">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Upwork-logo.svg/2560px-Upwork-logo.svg.png" alt="Upwork" style="height:22px;">
         <span style="font-size:18px; font-weight:700;">Disponible en Upwork</span>
       </div>
@@ -242,7 +246,7 @@
         <img src="images/logo_new_final.png" alt="Foto" style="width:80px; height:80px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
         <h3 style="margin:5px 0; color:#fff;"> Suburbio Studios</h3>
         <p style="font-size:14px; color:#ccc;">Producción Musical | Diseño Sonoro | Postproducción</p>
-        <a href="https://www.upwork.com/freelancers/~0140bf787d71508eab?mp_source=share" target="_blank" style="display:inline-block; margin-top:12px; padding:12px 24px; background:#14a800; color:white; font-weight:700; text-decoration:none; border-radius:8px; transition:0.3s;" onmouseover="this.style.background='#0e7a00'" onmouseout="this.style.background='#14a800'">🚀 Contrátanos en Upwork</a>
+        <a href="https://www.upwork.com/freelancers/~0140bf787d71508eab?mp_source=share" target="_blank" rel="noopener noreferrer" style="display:inline-block; margin-top:12px; padding:12px 24px; background:var(--green); color:white; font-weight:700; text-decoration:none; border-radius:8px; transition:0.3s;" onmouseover="this.style.background='#0e7a00'" onmouseout="this.style.background='var(--green)'">🚀 Contrátanos en Upwork</a>
       </div>
     </div>
   </section>
@@ -251,31 +255,32 @@
   <section id="proyectos">
     <h2>Proyectos Destacados</h2>
     <h3 style="text-align:center; margin-top:2rem;">Producción Musical, Mezcla y Mastering</h3>
-    <p class="proyectos-destacados" style="text-align:center;">
+    <p class="proyectos-destacados">
       Aquí puedes escuchar proyectos de bandas que confiaron en mis servicios de mezcla y mastering online
-    </p>    
+    </p>
+
     <div style="text-align:center; margin: 2rem 0;">
-      <a href="https://mixmaster.suburstudios.com" target="_blank" class="btn-comparaciones">🔊 Escucha comparaciones Antes / Después</a>
+      <a href="https://mixmaster.suburstudios.com" target="_blank" rel="noopener noreferrer" class="btn-comparaciones">🔊 Escucha comparaciones Antes / Después</a>
     </div>
 
     <div class="carousel">
-      <button class="carousel-button prev">&#10094;</button>
+      <button class="carousel-button prev" aria-label="Anterior">&#10094;</button>
       <div class="carousel-track">
-        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/3SP97L0jJnI" allowfullscreen></iframe></div>
-        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/7TEt6f9OzCE" allowfullscreen></iframe></div>
-        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/rAdbh1hMQrI" allowfullscreen></iframe></div>
-        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/pke7HYnqTKw" allowfullscreen></iframe></div>
-        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/8dPvSL8GCjQ" allowfullscreen></iframe></div>
-        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/MNJDjKkKVJY" allowfullscreen></iframe></div>
+        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/3SP97L0jJnI" allowfullscreen title="Proyecto 1"></iframe></div>
+        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/7TEt6f9OzCE" allowfullscreen title="Proyecto 2"></iframe></div>
+        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/rAdbh1hMQrI" allowfullscreen title="Proyecto 3"></iframe></div>
+        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/pke7HYnqTKw" allowfullscreen title="Proyecto 4"></iframe></div>
+        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/8dPvSL8GCjQ" allowfullscreen title="Proyecto 5"></iframe></div>
+        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/MNJDjKkKVJY" allowfullscreen title="Proyecto 6"></iframe></div>
       </div>
-      <button class="carousel-button next">&#10095;</button>
+      <button class="carousel-button next" aria-label="Siguiente">&#10095;</button>
     </div>
 
     <h3 style="text-align:center; margin-top:3rem;">Diseño Sonoro y Postproducción Audiovisual</h3>
     <div class="postgrid">
-      <iframe src="https://www.youtube.com/embed/iV_Y7xaVOJk" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/pyRpX92PwX8" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/JoELOim7PaY" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/iV_Y7xaVOJk" allowfullscreen title="Post 1"></iframe>
+      <iframe src="https://www.youtube.com/embed/pyRpX92PwX8" allowfullscreen title="Post 2"></iframe>
+      <iframe src="https://www.youtube.com/embed/JoELOim7PaY" allowfullscreen title="Post 3"></iframe>
     </div>
   </section>
 
@@ -283,51 +288,74 @@
   <section id="contacto" class="contact">
     <h2>Contacto</h2>
     <p>¿Tienes un proyecto en mente? Escríbenos y te responderemos lo antes posible.</p>
-    <a href="https://docs.google.com/forms/d/1LK2Yl3Xdtbk-kLGKyRvqiJZak1pYk5XQBoExB3215v8" target="_blank">Formulario de Contacto</a>
+    <a href="https://docs.google.com/forms/d/1LK2Yl3Xdtbk-kLGKyRvqiJZak1pYk5XQBoExB3215v8" target="_blank" rel="noopener noreferrer">Formulario de Contacto</a>
   </section>
 
   <!-- Banner Plugin Boutique -->
   <section style="text-align: center; padding: 2rem 0;">
-    <a href="https://www.pluginboutique.com/articles/1769?a_aid=687e62a06155f&amp;a_bid=2c9595a5" target="_top">
+    <a href="https://www.pluginboutique.com/articles/1769?a_aid=687e62a06155f&amp;a_bid=2c9595a5" target="_top" rel="noopener noreferrer">
       <img src="//loopmasters.postaffiliatepro.com/accounts/default1/hfwq3b89wu2/2c9595a5.jpg" alt="Plugin Boutique Banner" width="300" height="100" />
     </a>
   </section>
 
   <footer>
     <p>&copy; 2025 Suburbio Studios. Todos los derechos reservados.</p>
-    <div class="social-icons-footer">
-      <a href="https://www.instagram.com/suburbiostudio" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@suburbiostudio" target="_blank"><i class="fab fa-tiktok"></i></a>
-      <a href="https://www.facebook.com/suburstudios" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://www.youtube.com/channel/UCsItmwJBywstgw_Twjzrq-A" target="_blank"><i class="fab fa-youtube"></i></a>
+    <div class="social-icons-footer" aria-label="Redes sociales">
+      <a href="https://www.instagram.com/suburbiostudio" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.2A4.8 4.8 0 1 0 16.8 13 4.8 4.8 0 0 0 12 8.2zM18.5 6.3a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@suburbiostudio" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17 4.5v5.2a3.8 3.8 0 1 1-3.8-3.8v2.7A1.1 1.1 0 0 0 14 10a6 6 0 1 0 3 5.2V4.5z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/suburstudios" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15 3h3v4h-3v14h-4V7H9V3h3V1.8C12 0.8 12.7 0 14 0h1v3z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/channel/UCsItmwJBywstgw_Twjzrq-A" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M23 7.1a3 3 0 0 0-2.1-2.1C18.7 4 12 4 12 4s-6.7 0-8.9.9A3 3 0 0 0 .9 7v10a3 3 0 0 0 2.1 2.1C5.3 20 12 20 12 20s6.7 0 8.9-.9A3 3 0 0 0 23 17V7.1zM10 15.5V8.5l6 3.5-6 3.5z"/></svg>
+      </a>
     </div>
   </footer>
 
-  <!-- Script Carousel -->
+  <!-- Script Carousel (seguro: comprueba elementos) -->
   <script>
-    const track = document.querySelector('.carousel-track');
-    const items = Array.from(track.children);
-    const prevButton = document.querySelector('.carousel-button.prev');
-    const nextButton = document.querySelector('.carousel-button.next');
-    const itemWidth = items[0].getBoundingClientRect().width + 20;
-    const totalItems = items.length;
-    const visibleCount = 3;
-    const maxIndex = totalItems - visibleCount;
-    let index = 0;
+    (function(){
+      const track = document.querySelector('.carousel-track');
+      const prevButton = document.querySelector('.carousel-button.prev');
+      const nextButton = document.querySelector('.carousel-button.next');
 
-    function updateTrack() {
-      track.style.transform = `translateX(${-index * itemWidth}px)`;
-    }
-    prevButton.addEventListener('click', () => {
-      index = index > 0 ? index - 1 : maxIndex;
-      updateTrack();
-    });
-    nextButton.addEventListener('click', () => {
-      index = index < maxIndex ? index + 1 : 0;
-      updateTrack();
-    });
+      if (!track || !prevButton || !nextButton) return; // si no hay carrusel, salimos
 
-    updateTrack();
+      const items = Array.from(track.children);
+      let index = 0;
+      let itemWidth = items[0].getBoundingClientRect().width + 20;
+
+      function updateItemWidth() {
+        itemWidth = items[0].getBoundingClientRect().width + 20;
+      }
+      window.addEventListener('resize', updateItemWidth);
+
+      const totalItems = items.length;
+      const visibleCount = window.innerWidth < 600 ? 1 : (window.innerWidth < 900 ? 2 : 3);
+      const maxIndex = Math.max(0, totalItems - visibleCount);
+
+      function updateTrack() {
+        track.style.transform = `translateX(${-index * itemWidth}px)`;
+      }
+
+      prevButton.addEventListener('click', () => {
+        index = index > 0 ? index - 1 : maxIndex;
+        updateTrack();
+      });
+
+      nextButton.addEventListener('click', () => {
+        index = index < maxIndex ? index + 1 : 0;
+        updateTrack();
+      });
+
+      // init
+      updateItemWidth();
+      updateTrack();
+    })();
   </script>
 </body>
 </html>
