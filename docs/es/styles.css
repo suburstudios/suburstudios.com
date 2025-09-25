@@ -1,340 +1,330 @@
-/* Fuentes generales */
-body {
-  margin: 0;
-  padding: 0;
-  background: #111;
-  color: #f1f1f1;
-  font-family: 'Montserrat', sans-serif;
-  line-height: 1.6;
+/* styles.css - Suburbio Studios (pulido, profesional) */
+
+/* ---------------------------
+   Fuentes
+   - Bruno Ace SC para header (título / slogan / menú)
+   - Inter para el resto (más profesional)
+---------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Inter:wght@300;400;600;700&display=swap');
+
+:root{
+  --bg:#0f0f0f;
+  --surface:#141414;
+  --muted:#9aa0a6;
+  --accent-green:#14a800;
+  --accent-red:#e63946;
+  --text:#f1f1f1;
+  --card:#1a1a1a;
+  --max-w:1200px;
 }
 
-/* Header */
-header.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem 2rem;
-  background: #000;
+/* Reset / base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
-.logo img {
-  height: 80px;
-  width: auto;
+/* =========================
+   HEADER
+   ========================= */
+header.header-container{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:1.6rem 2rem;
+  background:#000;
+  position:sticky;
+  top:0;
+  z-index:120;
+  box-shadow:0 6px 20px rgba(0,0,0,0.6);
 }
 
-.header-center {
-  text-align: center;
+/* logo */
+.logo img{ height:92px; width:auto; display:block; }
+
+/* centro */
+.header-center{ flex:1; text-align:center; }
+header h1{
+  font-family:'Bruno Ace SC', cursive;
+  font-size:2.8rem;
+  margin:0;
+  line-height:1;
+  color:var(--text);
+}
+.slogan{
+  font-family:'Bruno Ace SC', cursive;
+  display:block;
+  font-size:1.05rem;
+  color:var(--muted);
+  letter-spacing:0.22rem;
+  margin-top:6px;
 }
 
-header h1 {
-  font-family: 'Bruno Ace SC', sans-serif;
-  font-weight: normal;
-  font-size: 2.5rem;
-  margin: 0;
+/* NAV - mantener Bruno Ace SC en links (como pediste) */
+nav{ margin-top:8px; }
+nav .menu{
+  display:flex;
+  gap:0.85rem;
+  justify-content:center;
+  align-items:center;
+  list-style:none;
+  padding:0;
+  margin:0;
+  flex-wrap:wrap;
+}
+nav .menu li a{
+  font-family:'Bruno Ace SC', cursive;
+  color:var(--text);
+  text-decoration:none;
+  padding:0.45rem 0.9rem;
+  border-radius:6px;
+  font-weight:600;
+  font-size:1rem;
+  transition:background .18s ease, color .18s ease, transform .12s ease;
+}
+nav .menu li a:hover{
+  background: rgba(255,255,255,0.03);
+  transform:translateY(-2px);
+  color:var(--text);
 }
 
-.slogan {
-  font-weight: 400;
-  letter-spacing: 0.2rem;
-  color: #aaa;
-  margin: 0.5rem 0 1rem;
-  font-size: 1.1rem;
+/* menu boton (movil) */
+.menu-toggle{
+  display:none; /* visible en media queries */
+  background:none;
+  border:none;
+  color:var(--text);
+  font-size:1.9rem;
+  cursor:pointer;
 }
 
-/* Menú */
-nav .menu {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* social icons */
+.social-icons-container{
+  display:flex;
+  gap:0.8rem;
+  align-items:center;
+}
+.social-icons-container a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:38px;
+  height:38px;
+  color:var(--text);
+  border-radius:8px;
+  transition:transform .18s ease, background .18s ease, color .18s ease;
+}
+.social-icons-container a svg{ width:20px; height:20px; fill:currentColor; display:block; }
+.social-icons-container a:hover{ transform:scale(1.08); color:var(--accent-red); background:rgba(255,255,255,0.02); }
+
+/* =========================
+   HERO
+   ========================= */
+.hero{
+  position:relative;
+  height:64vh;
+  min-height:380px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+}
+.hero-image{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);
+  z-index:0;
+}
+.hero .hero-overlay{
+  position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.45)); z-index:1;
 }
 
-nav .menu li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  transition: background 0.3s ease;
+/* =========================
+   LAYOUT SECTIONS
+   ========================= */
+section{
+  padding:3.5rem 1.2rem;
+  max-width:var(--max-w);
+  margin:0 auto;
 }
 
-nav .menu li a:hover {
-  background: #222;
+/* Titles (h2) - blanco neutro, no azul/morado */
+section h2{
+  font-weight:700;
+  font-size:2.25rem;
+  margin-bottom:1.25rem;
+  color:var(--text);
+  border-bottom:2px solid rgba(255,255,255,0.04);
+  padding-bottom:.6rem;
+  text-align:center;
 }
 
-.menu-toggle {
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: #fff;
-  cursor: pointer;
+/* pequeño subtítulo centrado */
+.intro-servicios, .proyectos-destacados {
+  max-width:900px;
+  margin:0 auto 1.8rem;
+  color:#cfcfcf;
+  text-align:center;
 }
 
-/* Redes sociales */
-.social-icons-container {
-  display: flex;
-  gap: 1rem;
+/* =========================
+   SERVICIOS (cards)
+   ========================= */
+.services{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+  gap:1.6rem;
+  align-items:start;
 }
 
-.social-icons-container a {
-  color: #fff;
-  font-size: 1.3rem;
-  transition: transform 0.2s ease, color 0.2s ease;
+.service{
+  background:var(--card);
+  padding:1.35rem;
+  border-radius:12px;
+  text-align:center;
+  transition:transform .25s ease, box-shadow .25s ease;
+  min-height:320px;           /* un poco más alargadas verticalmente */
+  display:flex;
+  flex-direction:column;
+  gap:0.9rem;
+}
+.service:hover{
+  transform: translateY(-8px);
+  box-shadow:0 14px 40px rgba(0,0,0,0.6);
+}
+.service img{
+  width:100%;
+  height:180px;              /* horizontalmente más presencia */
+  object-fit:cover;
+  border-radius:8px;
+}
+.service h3{
+  font-size:1.25rem;
+  margin:0.35rem 0 0.2rem;
+  color:#f5f5f5;
+  font-weight:700;
+}
+.service p{
+  color:#bfc7cc;
+  font-size:0.98rem;
+  margin-top:0.25rem;
+  flex:1;                     /* empuja el contenido para un buen espaciado */
 }
 
-.social-icons-container a:hover {
-  transform: scale(1.2);
-  color: #e63946;
+/* CTA botones dentro card */
+.service a{ color:inherit; text-decoration:none; }
+
+/* =========================
+   UPWORK CARD (ajustada)
+   ========================= */
+.upwork-card{
+  max-width:360px;
+  margin:2rem auto;
+  border-radius:14px;
+  overflow:hidden;
+  background:#0f0f0f;
+  border:1px solid rgba(20,168,0,0.06);
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+.upwork-header{
+  display:flex; align-items:center; gap:12px;
+  padding:12px 16px;
+  background:linear-gradient(90deg,#0f0f0f,#111);
+  border-bottom:1px solid rgba(20,168,0,0.08);
+}
+.upwork-header img{ height:28px; width:auto; display:block; }
+.upwork-body{ padding:18px; text-align:center; }
+.upwork-body img{ width:64px; height:64px; border-radius:50%; object-fit:cover; margin-bottom:10px; }
+.upwork-body h3{ margin:6px 0 4px; font-size:1.05rem; }
+.upwork-body p{ color:#c9d0d4; font-size:0.92rem; margin-bottom:10px; }
+
+/* Upwork CTA */
+.btn-upwork{ background:linear-gradient(180deg,var(--accent-green), #0d9200); color:#fff; padding:10px 16px; border-radius:8px; display:inline-block; font-weight:700; }
+
+/* =========================
+   CARRUSEL (mejorado)
+   ========================= */
+.carousel{ position:relative; overflow:hidden; margin:1.8rem 0 2.6rem; padding:0 8px; }
+.carousel-track{ display:flex; gap:1rem; transition:transform .45s cubic-bezier(.22,.9,.3,1); will-change:transform; }
+.carousel-item{ flex:0 0 31%; border-radius:10px; overflow:hidden; background:#0b0b0b; box-shadow:0 6px 20px rgba(0,0,0,0.55); }
+.carousel-item iframe{ display:block; width:100%; height:220px; border:0; }
+
+/* Flechas - estilo más discreto y profesional */
+.carousel-button{
+  position:absolute; top:50%;
+  transform:translateY(-50%);
+  background:linear-gradient(180deg,#131313,#0b0b0b);
+  color:var(--text);
+  border:1px solid rgba(255,255,255,0.04);
+  width:44px; height:44px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 8px 20px rgba(0,0,0,0.6);
+  cursor:pointer;
+  transition:transform .14s ease, background .14s ease;
+  z-index:40;
+}
+.carousel-button:hover{ transform:translateY(-50%) scale(1.05); background:#111; }
+.carousel-button.prev{ left:14px; }
+.carousel-button.next{ right:14px; }
+.carousel-button.disabled{ opacity:.35; pointer-events:none; transform:none; }
+
+/* =========================
+   POSTGRID
+   ========================= */
+.postgrid{ display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); margin-top:1.8rem; }
+.postgrid iframe{ width:100%; height:220px; border-radius:8px; display:block; }
+
+/* =========================
+   CONTACTO
+   ========================= */
+.contact{ text-align:center; padding-bottom:2rem; }
+.contact h2{ margin-bottom:.6rem; color:var(--text) }
+.contact p{ color:#cfcfcf; max-width:760px; margin:0 auto 1rem; }
+.btn-contacto{
+  background:linear-gradient(180deg,var(--accent-green), #0d9200);
+  color:#fff; padding:10px 16px; border-radius:10px; font-weight:700; display:inline-block;
+  text-decoration:none;
 }
 
-/* Hero */
-.hero {
-  position: relative;
-  height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+/* =========================
+   FOOTER
+   ========================= */
+footer{ background:#000; color:#8f969a; padding:2rem 1rem; text-align:center; border-top:1px solid rgba(255,255,255,0.02); }
+footer p{ margin:0.5rem 0; font-size:0.95rem; }
+
+/* small helpers */
+.container{ max-width:var(--max-w); margin:0 auto; padding:0 1rem; }
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width:1200px){
+  .carousel-item{ flex:0 0 46%; }
 }
-
-.hero-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
+@media (max-width:900px){
+  header h1{ font-size:2.4rem; }
+  .logo img{ height:78px; }
+  .services{ grid-template-columns:1fr; }
+  .carousel-item{ flex:0 0 70%; }
+  .postgrid iframe{ height:200px; }
+  .upwork-card{ max-width:340px; }
 }
-
-/* Secciones */
-section {
-  padding: 4rem 2rem;
-  max-width: 1200px;
-  margin: auto;
-}
-
-section h2 {
-  font-weight: 700;
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  border-bottom: 2px solid #444;
-  padding-bottom: 0.5rem;
-  text-align: center;
-}
-
-/* Servicios */
-.services {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-.service {
-  background: #1a1a1a;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.service:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-}
-
-.service img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 0.5rem;
-}
-
-/* Botones */
-.btn-comparaciones, .btn-contacto, .btn-upwork {
-  display: inline-block;
-  padding: 0.8rem 1.5rem;
-  font-weight: 700;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background 0.3s ease, transform 0.3s ease;
-  font-size: 1.1rem;
-}
-
-.btn-comparaciones {
-  background-color: #e63946;
-  color: #fff;
-}
-
-.btn-comparaciones:hover {
-  background-color: #c82333;
-  transform: scale(1.05);
-}
-
-.btn-contacto, .btn-upwork {
-  background-color: #14a800;
-  color: #fff;
-}
-
-.btn-contacto:hover, .btn-upwork:hover {
-  background-color: #0e7a00;
-  transform: scale(1.05);
-}
-
-/* Carrusel */
-.carousel {
-  position: relative;
-  overflow: hidden;
-  margin: 2rem 0;
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease;
-  gap: 1rem;
-}
-
-.carousel-item {
-  flex: 0 0 32%;
-}
-
-.carousel-item iframe {
-  width: 100%;
-  height: 180px;
-  border: none;
-  border-radius: 0.5rem;
-}
-
-.carousel-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #222;
-  border: none;
-  color: #fff;
-  font-size: 1.8rem;
-  padding: 0.5rem 0.8rem;
-  cursor: pointer;
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-  z-index: 10;
-}
-
-.carousel-button.prev { left: 1rem; }
-.carousel-button.next { right: 1rem; }
-
-/* Postproducción */
-.postgrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.postgrid iframe {
-  width: 100%;
-  height: 200px;
-  border: none;
-  border-radius: 0.5rem;
-}
-
-/* Upwork */
-.upwork-card {
-  max-width: 360px;
-  margin: 2rem auto;
-  border: 2px solid #14a800;
-  border-radius: 16px;
-  overflow: hidden;
-  background: #111;
-  text-align: center;
-  font-family: 'Montserrat', sans-serif;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-}
-
-.upwork-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: #1a1a1a;
-  border-bottom: 2px solid #14a800;
-}
-
-.upwork-header img {
-  height: 35px;
-}
-
-.upwork-body {
-  padding: 1.2rem;
-}
-
-.upwork-body img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-bottom: 0.8rem;
-}
-
-.upwork-body h3 {
-  margin: 0.3rem 0;
-  font-size: 1.1rem;
-}
-
-.upwork-body p {
-  font-size: 0.9rem;
-  color: #ccc;
-  margin-bottom: 0.8rem;
-}
-
-/* Contacto */
-.contact {
-  text-align: center;
-  margin: 3rem 0;
-}
-
-/* Footer */
-footer {
-  background: #000;
-  color: #888;
-  padding: 2rem;
-  text-align: center;
-}
-
-footer p {
-  margin: 1rem 0 0;
-}
-
-/* Responsivo */
-@media (max-width: 768px) {
-  nav .menu {
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-
-  nav .menu.active {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .carousel-item {
-    flex: 0 0 80%;
-  }
-
-  header.header-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .social-icons-container {
-    margin-top: 1rem;
-  }
+@media (max-width:600px){
+  header.header-container{ flex-direction:column; gap:10px; padding:14px; align-items:center; }
+  .menu-toggle{ display:block; }
+  nav .menu{ display:none; }
+  nav .menu.active{ display:flex; flex-direction:column; gap:8px; margin-top:6px; background:rgba(255,255,255,0.02); padding:10px; border-radius:8px; }
+  .social-icons-container{ margin-top:6px; }
+  .carousel-item{ flex:0 0 92%; }
+  .hero{ height:48vh; min-height:300px; }
+  header h1{ font-size:2.1rem; }
+  .slogan{ font-size:0.98rem; }
 }
