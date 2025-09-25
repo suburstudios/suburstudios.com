@@ -4,172 +4,116 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suburbio Studios</title>
+  <!-- Fuentes Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="/favicon.png" type="image/png">
+
   <style>
-    /* RESET */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Montserrat', sans-serif; background:#111; color:#f1f1f1; line-height:1.6; }
-    a { color:inherit; text-decoration:none; }
-    img { max-width:100%; display:block; }
+    body { margin: 0; padding: 0; background: #111; color: #f1f1f1; font-family: 'Montserrat', sans-serif; }
+    header, footer { background: #000; text-align: center; padding: 2rem 1rem; position: relative; }
+    header h1 { font-weight: 300; font-size: 3rem; margin: 0; }
+    .slogan { font-weight: 400; letter-spacing: 0.3rem; color: #aaa; margin: 1rem 0 2rem; font-size: 1.25rem; }
+    nav a { color: #fff; text-decoration: none; font-weight: 700; margin: 0 1rem; }
 
-    /* HEADER */
-    header { background:#000; padding:2rem 1rem; text-align:center; position:relative; }
-    header h1 { font-weight:700; font-size:3rem; margin-bottom:0.5rem; }
-    .slogan { font-weight:300; color:#aaa; letter-spacing:0.2rem; margin-bottom:1rem; }
-    nav a { margin:0 1rem; font-weight:700; transition:color 0.3s; }
-    nav a:hover { color:#e63946; }
+    /* Redes sociales uniformes */
+    .social-icons { display: flex; gap: 0.75rem; position: absolute; top: 1rem; right: 1rem; }
+    .social-icons a { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: #111; border-radius: 50%; transition: transform 0.2s, background 0.2s; }
+    .social-icons a svg { width: 20px; height: 20px; fill: #fff; transition: fill 0.2s; }
+    .social-icons a:hover { transform: scale(1.2); background: #e63946; }
+    .social-icons a:hover svg { fill: #fff; }
 
-    /* REDES SOCIALES */
-    .social-icons { display:flex; gap:0.75rem; position:absolute; top:1rem; right:1rem; }
-    .social-icons a svg { width:28px; height:28px; fill:white; transition: transform 0.2s, fill 0.2s; }
-    .social-icons a:hover svg { transform:scale(1.2); fill:#e63946; }
+    /* Hero, secciones y demás se mantienen iguales */
+    .hero { position: relative; height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 1rem; overflow: hidden; }
+    .hero video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+    .hero h1 { font-size: 2.5rem; background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 0.5rem; margin: 0; }
+    .hero .slogan-hero { font-size: 1.75rem; font-weight: 300; letter-spacing: 0.4rem; margin-top: 1rem; }
 
-    /* HERO */
-    .hero { position:relative; height:80vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; overflow:hidden; padding:0 1rem; }
-    .hero video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-1; }
-    .hero h1 { font-size:2.5rem; background:rgba(0,0,0,0.5); padding:1rem; border-radius:0.5rem; }
-    .hero .slogan-hero { font-size:1.5rem; font-weight:300; letter-spacing:0.3rem; margin-top:1rem; }
+    section { padding: 4rem 2rem; max-width: 1200px; margin: auto; }
+    section h2 { font-weight: 700; font-size: 2.75rem; margin-bottom: 1.5rem; border-bottom: 2px solid #444; padding-bottom: 0.5rem; text-align: center; }
 
-    /* SECCIONES */
-    section { padding:4rem 2rem; max-width:1200px; margin:auto; }
-    section h2 { font-weight:700; font-size:2.5rem; margin-bottom:2rem; text-align:center; border-bottom:2px solid #444; padding-bottom:0.5rem; }
+    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .service { background: #222; padding: 1rem; border-radius: 1rem; text-align: center; }
+    .service img { width: 100%; height: 150px; object-fit: cover; border-radius: 0.5rem; }
 
-    /* SERVICIOS */
-    .services { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; }
-    .service { background:#222; padding:1rem; border-radius:1rem; text-align:center; transition:transform 0.3s; }
-    .service:hover { transform:scale(1.03); }
-    .service img { border-radius:0.5rem; height:150px; object-fit:cover; margin-bottom:1rem; }
-    .service h3 { margin-bottom:0.5rem; }
-    .service p { font-size:0.95rem; color:#ccc; }
+    .btn-comparaciones { display: inline-block; padding: 0.8rem 1.5rem; background-color: #e63946; color: #fff; font-weight: bold; text-decoration: none; border-radius: 8px; transition: background 0.3s ease, transform 0.3s ease; font-size: 1.1rem; animation: pulse 2s infinite; }
+    .btn-comparaciones:hover { background-color: #c82333; transform: scale(1.05); }
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-    /* CARRUSEL VIDEOS */
-    .carousel { position:relative; overflow:hidden; margin:2rem 0; }
-    .carousel-track { display:flex; transition:transform 0.5s ease; gap:1rem; }
-    .carousel-item { flex:0 0 30%; }
-    .carousel-item iframe { width:100%; height:180px; border:none; border-radius:0.5rem; }
-    .carousel-button { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.5); border:none; color:#fff; font-size:2rem; padding:0.5rem; cursor:pointer; z-index:10; }
-    .carousel-button.prev { left:0; }
-    .carousel-button.next { right:0; }
+    .carousel { position: relative; overflow: hidden; margin: 2rem 0; }
+    .carousel-track { display: flex; transition: transform 0.5s ease; }
+    .carousel-item { flex: 0 0 30%; margin: 0 10px; }
+    .carousel-item iframe { width: 100%; height: 180px; border: none; border-radius: 0.5rem; }
+    .carousel-button { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); border: none; color: #fff; font-size: 2rem; padding: 0.5rem; cursor: pointer; z-index: 10; }
+    .carousel-button.prev { left: 0; }
+    .carousel-button.next { right: 0; }
 
-    /* SECCIÓN CURSOS */
-    .courses { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem; margin-top:2rem; }
-    .course { background:#222; border-radius:1rem; overflow:hidden; transition:transform 0.3s; }
-    .course:hover { transform:scale(1.03); }
-    .course img { width:100%; height:180px; object-fit:cover; }
-    .course h3 { padding:0.5rem 1rem; }
-    .course p { padding:0 1rem 1rem 1rem; color:#ccc; font-size:0.95rem; }
+    .postgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .postgrid iframe { width: 100%; height: 200px; border: none; border-radius: 0.5rem; }
 
-    /* FOOTER */
-    footer { background:#000; text-align:center; padding:2rem 1rem; }
-    footer p { font-size:0.9rem; color:#aaa; }
-
-    /* BOTONES */
-    .btn { display:inline-block; padding:0.8rem 1.5rem; background:#e63946; color:#fff; font-weight:700; border-radius:8px; transition:all 0.3s; margin-top:1rem; }
-    .btn:hover { background:#c82333; transform:scale(1.05); }
-
-    /* RESPONSIVE */
-    @media(max-width:768px){ .carousel-item { flex:0 0 45%; } }
-    @media(max-width:480px){ .carousel-item { flex:0 0 80%; } }
+    .contact { text-align: center; margin-top: 4rem; }
+    .contact a { display: inline-block; margin-top: 1rem; padding: 1rem 2rem; background-color: #0af; color: #fff; text-decoration: none; border-radius: 1rem; font-weight: 700; }
+    footer p { font-size: 0.9rem; }
   </style>
+
+  <!-- Metricool tracking -->
+  <script>
+    function loadScript(a){
+      var b=document.getElementsByTagName("head")[0],
+          c=document.createElement("script");
+      c.type="text/javascript",
+      c.src="https://tracker.metricool.com/resources/be.js",
+      c.onreadystatechange=a,
+      c.onload=a,
+      b.appendChild(c)
+    }
+    loadScript(function(){
+      beTracker.t({hash:"eba2b16ed73a61b8af94d17c05a24ec"})
+    });
+  </script>
 </head>
 <body>
-
   <header>
     <h1>Suburbio Studios</h1>
-    <div class="slogan">MAKE NEW NOISE</div>
+    <div class="slogan">MAKE NEW NOISE</div>
     <nav>
       <a href="#servicios">Servicios</a>
-      <a href="#cursos">Cursos</a>
-      <a href="#contacto">Contacto</a>
+      <a href="https://mixmaster.suburstudios.com/">Proyectos</a>
+      <a href="https://cursos.suburstudios.com">Cursos</a>
+      <a href="https://forms.gle/y9RZXQr6BwukTivCA">Contacto</a>
     </nav>
 
-    <!-- REDES SOCIALES -->
+    <!-- Redes sociales -->
     <div class="social-icons" aria-label="Redes sociales">
       <!-- Instagram -->
       <a href="https://www.instagram.com/suburbiostudio" target="_blank" aria-label="Instagram">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.849.07 1.366.062 2.633.342 3.608 1.317.975.975 1.255 2.242 1.317 3.608.058 1.265.07 1.645.07 4.849s-.012 3.584-.07 4.849c-.062 1.366-.342 2.633-1.317 3.608-.975.975-2.242 1.255-3.608 1.317-1.265.058-1.645.07-4.849.07s-3.584-.012-4.849-.07c-1.366-.062-2.633-.342-3.608-1.317-.975-.975-1.255-2.242-1.317-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.849c.062-1.366.342-2.633 1.317-3.608C4.584 2.505 5.851 2.225 7.217 2.163 8.481 2.105 8.861 2.163 12 2.163zm0 5.838a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm6.406-3.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.849.07 1.366.062 2.633.342 3.608 1.317.975.975 1.255 2.242 1.317 3.608.058 1.265.07 1.645.07 4.849s-.012 3.584-.07 4.849c-.062 1.366-.342 2.633-1.317 3.608-.975.975-2.242 1.255-3.608 1.317-1.265.058-1.645.07-4.849.07s-3.584-.012-4.849-.07c-1.366-.062-2.633-.342-3.608-1.317-.975-.975-1.255-2.242-1.317-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.849c.062-1.366.342-2.633 1.317-3.608.975-.975 2.242-1.255 3.608-1.317C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.773.131 4.592.373 3.635 1.33c-.956.956-1.198 2.137-1.257 3.416C2.013 6.332 2 6.741 2 10s.013 3.668.072 4.948c.059 1.279.301 2.46 1.257 3.416.957.957 2.138 1.198 3.416 1.257C8.332 21.987 8.741 22 12 22s3.668-.013 4.948-.072c1.279-.059 2.46-.301 3.416-1.257.957-.957 1.198-2.138 1.257-3.416.059-1.28.072-1.689.072-4.948s-.013-3.668-.072-4.948c-.059-1.279-.301-2.46-1.257-3.416C19.408.373 18.227.131 16.948.072 15.668.013 15.259 0 12 0z"/><path d="M12 5.838a6.162 6.162 0 1 0 6.162 6.162A6.169 6.169 0 0 0 12 5.838zm0 10.162a3.999 3.999 0 1 1 3.999-3.999A4.005 4.005 0 0 1 12 16zm6.406-11.845a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>
       </a>
       <!-- TikTok -->
       <a href="https://www.tiktok.com/@suburbiostudio" target="_blank" aria-label="TikTok">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C18.627 0 24 5.373 24 12s-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0zm3.798 8.21c-.358.03-1.117.028-1.867-.34v6.888c0 2.072-1.68 3.754-3.75 3.754-2.07 0-3.75-1.682-3.75-3.754s1.68-3.753 3.75-3.753c.187 0 .374.014.56.043v-2.907c-.418-.05-.843-.078-1.265-.078-1.768 0-3.31.844-4.36 2.155v1.702c1.05-1.311 2.592-2.155 4.36-2.155.418 0 .843.028 1.265.078v-1.702c0-.001 1.117.371 1.867.34v-1.867z"/></svg>
-      </a>
-      <!-- Facebook -->
-      <a href="https://www.facebook.com/suburbiostudio" target="_blank" aria-label="Facebook">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82V14.708h-3.417v-3.622h3.417V8.413c0-3.39 2.067-5.233 5.087-5.233 1.446 0 2.688.108 3.049.156v3.53l-2.09.001c-1.637 0-1.954.779-1.954 1.92v2.518h3.906l-.509 3.622h-3.397V24h6.666C23.407 24 24 23.407 24 22.676V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 0c6.627 0 12 5.373 12 12s-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0zm3.798 8.21c-.358.03-1.117.028-1.867-.34v6.888c0 2.072-1.68 3.754-3.75 3.754-2.07 0-3.75-1.682-3.75-3.754s1.68-3.753 3.75-3.753c.187 0 .374.014.56.043v-2.907a8.692 8.692 0 0 1-1.252-.078v-2.057c.418.05.843.078 1.265.078 1.768 0 3.31.844 4.36 2.155v1.702z"/></svg>
       </a>
       <!-- YouTube -->
       <a href="https://www.youtube.com/c/SuburbioStudios" target="_blank" aria-label="YouTube">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.108-2.12C19.337 3.75 12 3.75 12 3.75s-7.337 0-9.39.316a2.994 2.994 0 0 0-2.108 2.12C.13 8.246.13 12 .13 12s0 3.754.372 5.814a2.994 2.994 0 0 0 2.108 2.12c2.053.317 9.39.317 9.39.317s7.337 0 9.39-.317a2.994 2.994 0 0 0 2.108-2.12c.372-2.06.372-5.814.372-5.814s0-3.754-.372-5.814zM9.753 15.568V8.432l6.065 3.568-6.065 3.568z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.108-2.12C19.337 3.75 12 3.75 12 3.75s-7.337 0-9.39.316a2.994 2.994 0 0 0-2.108 2.12C.13 8.246.13 12 .13 12s0 3.754.372 5.814a2.994 2.994 0 0 0 2.108 2.12c2.053.317 9.39.317 9.39.317s7.337 0 9.39-.317a2.994 2.994 0 0 0 2.108-2.12c.372-2.06.372-5.814.372-5.814s0-3.754-.372-5.814zM9.753 15.568V8.432l6.065 3.568-6.065 3.568z"/></svg>
       </a>
     </div>
   </header>
 
-  <div class="hero">
-    <video autoplay loop muted>
-      <source src="https://suburstudios.com/videos/web_ppca_video.mp4" type="video/mp4">
-      Tu navegador no soporta la etiqueta de video.
-    </video>
-    <h1>Producción musical, diseño sonoro y postproducción a otro nivel</h1>
-    <div class="slogan-hero">MAKE NEW NOISE</div>
-  </div>
-
-  <section id="servicios">
-    <h2>Servicios</h2>
-    <div class="services">
-      <div class="service">
-        <img src="images/music_production.jpg" alt="Producción musical">
-        <h3>Producción Musical</h3>
-        <p>Composición, arreglos, beatmaking y dirección musical adaptada a tu visión artística.</p>
-      </div>
-      <div class="service">
-        <img src="images/mix_master.jpg" alt="Mezcla y Mastering">
-        <h3>Mezcla y Mastering</h3>
-        <p>Optimiza tu sonido para competir en todas las plataformas con claridad, pegada y balance.</p>
-      </div>
-      <div class="service">
-        <img src="images/postproduction.jpg" alt="Postproducción de Sonido">
-        <h3>Postproducción</h3>
-        <p>Edición, diseño sonoro, foley, ambientes y mezcla final para cine, series y videojuegos.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="cursos">
-    <h2>Cursos</h2>
-    <div class="courses">
-      <div class="course">
-        <img src="images/curso1.jpg" alt="Curso 1">
-        <h3>Producción Musical</h3>
-        <p>Aprende técnicas profesionales de producción musical desde cero hasta avanzado.</p>
-        <a href="https://cursos.suburstudios.com" class="btn">Ver Curso</a>
-      </div>
-      <div class="course">
-        <img src="images/curso2.jpg" alt="Curso 2">
-        <h3>Mezcla y Mastering</h3>
-        <p>Domina la mezcla y masterización con métodos de estudio profesional.</p>
-        <a href="https://cursos.suburstudios.com" class="btn">Ver Curso</a>
-      </div>
-      <div class="course">
-        <img src="images/curso3.jpg" alt="Curso 3">
-        <h3>Diseño Sonoro</h3>
-        <p>Crea ambientes, efectos y texturas sonoras para música, cine y videojuegos.</p>
-        <a href="https://cursos.suburstudios.com" class="btn">Ver Curso</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p style="text-align:center;">Si quieres trabajar conmigo o tienes cualquier duda, contáctame:</p>
-    <div style="text-align:center;">
-      <a href="https://forms.gle/y9RZXQr6BwukTivCA" class="btn">Formulario de Contacto</a>
-    </div>
-  </section>
-
+  <!-- Footer con mismos iconos -->
   <footer>
-    <p>© 2025 Suburbio Studios. Todos los derechos reservados.</p>
+    <div class="social-icons" aria-label="Redes sociales">
+      <a href="https://www.instagram.com/suburbiostudio" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.849.07 1.366.062 2.633.342 3.608 1.317.975.975 1.255 2.242 1.317 3.608.058 1.265.07 1.645.07 4.849s-.012 3.584-.07 4.849c-.062 1.366-.342 2.633-1.317 3.608-.975.975-2.242 1.255-3.608 1.317-1.265.058-1.645.07-4.849.07s-3.584-.012-4.849-.07c-1.366-.062-2.633-.342-3.608-1.317-.975-.975-1.255-2.242-1.317-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.849c.062-1.366.342-2.633 1.317-3.608.975-.975 2.242-1.255 3.608-1.317C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.773.131 4.592.373 3.635 1.33c-.956.956-1.198 2.137-1.257 3.416C2.013 6.332 2 6.741 2 10s.013 3.668.072 4.948c.059 1.279.301 2.46 1.257 3.416.957.957 2.138 1.198 3.416 1.257C8.332 21.987 8.741 22 12 22s3.668-.013 4.948-.072c1.279-.059 2.46-.301 3.416-1.257.957-.957 1.198-2.138 1.257-3.416.059-1.28.072-1.689.072-4.948s-.013-3.668-.072-4.948c-.059-1.279-.301-2.46-1.257-3.416C19.408.373 18.227.131 16.948.072 15.668.013 15.259 0 12 0z"/><path d="M12 5.838a6.162 6.162 0 1 0 6.162 6.162A6.169 6.169 0 0 0 12 5.838zm0 10.162a3.999 3.999 0 1 1 3.999-3.999A4.005 4.005 0 0 1 12 16zm6.406-11.845a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@suburbiostudio" target="_blank" aria-label="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M12 0c6.627 0 12 5.373 12 12s-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0zm3.798 8.21c-.358.03-1.117.028-1.867-.34v6.888c0 2.072-1.68 3.754-3.75 3.754-2.07 0-3.75-1.682-3.75-3.754s1.68-3.753 3.75-3.753c.187 0 .374.014.56.043v-2.907a8.692 8.692 0 0 1-1.252-.078v-2.057c.418.05.843.078 1.265.078 1.768 0 3.31.844 4.36 2.155v1.702z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/c/SuburbioStudios" target="_blank" aria-label="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.108-2.12C19.337 3.75 12 3.75 12 3.75s-7.337 0-9.39.316a2.994 2.994 0 0 0-2.108 2.12C.13 8.246.13 12 .13 12s0 3.754.372 5.814a2.994 2.994 0 0 0 2.108 2.12c2.053.317 9.39.317 9.39.317s7.337 0 9.39-.317a2.994 2.994 0 0 0 2.108-2.12c.372-2.06.372-5.814.372-5.814s0-3.754-.372-5.814zM9.753 15.568V8.432l6.065 3.568-6.065 3.568z"/></svg>
+      </a>
+    </div>
+    <p>&copy; 2025 Suburbio Studios. Todos los derechos reservados.</p>
   </footer>
-
 </body>
 </html>
