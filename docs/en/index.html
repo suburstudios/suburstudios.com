@@ -167,38 +167,33 @@
   </script>
 </head>
 <body>
-  
   <header>
-    <h1>Suburbio Studios</h1>
-    <div class="slogan">MAKE NEW NOISE</div>
-  
-    <!-- NAV -->
-    <nav>
-      <button class="menu-toggle" aria-label="Open menu">☰</button>
-      <ul class="menu">
-        <li><a href="#services">Services</a></li>
-        <li><a href="https://mixmaster.suburstudios.com/">Projects</a></li>
-        <li><a href="https://forms.gle/y9RZXQr6BwukTivCA">Contact</a></li>
-      </ul>
-    </nav>
-  
-    <!-- REDES SOCIALES -->
+    <!-- REDES SOCIALES - siempre arriba a la derecha -->
     <div class="social-icons-container" aria-label="Redes sociales">
       <a href="https://www.instagram.com/suburbiostudio" target="_blank" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2.163c3.204 0 3.584.012 4.849.07 1.366.062 2.633.347 3.608 1.322.975.975 1.26 2.242 1.322 3.608.058 1.265.07 1.645.07 4.849s-.012 3.584-.07 4.849c-.062 1.366-.347 2.633-1.322 3.608-.975.975-2.242 1.26-3.608 1.322-1.265.058-1.645.07-4.849.07s-3.584-.012-4.849-.07c-1.366-.062-2.633-.347-3.608-1.322-.975-.975-1.26-2.242-1.322-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.849c.062-1.366.347-2.633 1.322-3.608.975-.975 2.242-1.26 3.608-1.322C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.012 7.052.07 5.78.127 4.602.417 3.635 1.384 2.667 2.352 2.377 3.53 2.32 4.802.012 8.332 0 8.741 0 12s.012 3.668.07 4.948c.057 1.272.347 2.45 1.315 3.417.967.967 2.145 1.257 3.417 1.315C8.332 23.988 8.741 24 12 24s3.668-.012 4.948-.07c1.272-.057 2.45-.347 3.417-1.315.967-.967 1.257-2.145 1.315-3.417C23.988 15.668 24 15.259 24 12s-.012-3.668-.07-4.948c-.057-1.272-.347-2.45-1.315-3.417-.967-.967-2.145-1.257-3.417-1.315C15.668.012 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.879 1.44 1.44 0 0 0 0-2.879z"/>
-        </svg>
+        <!-- SVG Instagram -->
       </a>
       <a href="https://www.facebook.com/suburstudios" target="_blank" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078V12h3.047V9.356c0-3.007 1.792-4.668 4.533-4.668 1.312 0 2.686.235 2.686.235v2.953h-1.513c-1.49 0-1.953.926-1.953 1.874V12h3.328l-.532 3.469h-2.796v8.385C19.612 22.954 24 17.99 24 12c0-6.627-5.373-12-12-12z"/>
-        </svg>
+        <!-- SVG Facebook -->
       </a>
       <a href="https://www.youtube.com/channel/UCsItmwJBywstgw_Twjzrq-A" target="_blank" aria-label="YouTube">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
-          <path d="M23.498 6.186a2.994 2.994 0 0 0-2.108-2.12C19.411 3.5 12 3.5 12 3.5s-7.411 0-9.39.566a2.994 2.994 0 0 0-2.108 2.12A31.493 31.493 0 0 0 0 12a31.493 31.493 0 0 0 .502 5.814 2.994 2.994 0 0 0 2.108 2.12C4.589 20.5 12 20.5 12 20.5s7.411 0 9.39-.566a2.994 2.994 0 0 0 2.108-2.12A31.493 31.493 0 0 0 24 12a31.493 31.493 0 0 0-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-        </svg>
+        <!-- SVG YouTube -->
       </a>
+    </div>
+  
+    <div class="header-center">
+      <h1>Suburbio Studios</h1>
+      <div class="slogan">MAKE NEW NOISE</div>
+  
+      <!-- NAV -->
+      <nav>
+        <button class="menu-toggle" aria-label="Open menu">☰</button>
+        <ul class="menu">
+          <li><a href="#services">Services</a></li>
+          <li><a href="https://mixmaster.suburstudios.com/">Projects</a></li>
+          <li><a href="https://forms.gle/y9RZXQr6BwukTivCA">Contact</a></li>
+        </ul>
+      </nav>
     </div>
   
     <!-- SCRIPT MENÚ DESPLEGABLE -->
@@ -213,14 +208,37 @@
     <!-- CSS INLINE HEADER/MENÚ -->
     <style>
       header {
+        position: relative;
+        padding: 1.5rem 1rem;
+        background: #000;
+      }
+  
+      /* SOCIAL ICONS */
+      .social-icons-container {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        display: flex;
+        gap: 1rem;
+      }
+      .social-icons-container a {
+        color: #fff;
+        transition: transform 0.2s ease, color 0.2s ease;
+      }
+      .social-icons-container a:hover {
+        transform: scale(1.2);
+        color: #e63946;
+      }
+  
+      /* CENTER CONTENT */
+      .header-center {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 1.5rem 1rem;
-        background: #000;
-        position: relative;
+        text-align: center;
       }
+  
       header h1 { font-weight: 300; font-size: 3rem; margin: 0; }
       header .slogan { font-weight: 400; letter-spacing: 0.3rem; color: #aaa; margin: 0.5rem 0 1rem; font-size: 1.25rem; }
   
@@ -229,24 +247,12 @@
       nav .menu { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; list-style: none; padding: 0; margin: 0; }
       nav .menu li a { color: #fff; text-decoration: none; font-weight: 700; }
   
-      /* REDES SOCIALES */
-      .social-icons-container { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
-      .social-icons-container a { color: #fff; transition: transform 0.2s ease, color 0.2s ease; }
-      .social-icons-container a:hover { transform: scale(1.2); color: #e63946; }
-  
       /* MÓVIL */
       @media (max-width: 767px) {
         .menu-toggle { display: block; }
         nav .menu { display: none; flex-direction: column; gap: 1rem; margin-top: 0.5rem; background: #111; padding: 1rem; border-radius: 0.5rem; }
         nav .menu.show { display: flex; }
-      }
-  
-      /* DESKTOP */
-      @media (min-width: 768px) {
-        header { flex-direction: row; justify-content: space-between; align-items: center; }
-        .social-icons-container { margin-top: 0; }
-        nav .menu { display: flex; flex-direction: row; gap: 1rem; background: none; padding: 0; }
-        .menu-toggle { display: none; }
+        .social-icons-container { position: static; justify-content: center; margin-bottom: 1rem; }
       }
     </style>
   </header>
