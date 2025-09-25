@@ -167,17 +167,23 @@
   </script>
 </head>
 <body>
-  <!-- HEADER -->
+  
   <header>
     <h1>Suburbio Studios</h1>
     <div class="slogan">MAKE NEW NOISE</div>
+  
+    <!-- NAV -->
     <nav>
-      <a href="#servicios">Servicios</a>
-      <a href="https://mixmaster.suburstudios.com/">Proyectos</a>
-      <a href="https://cursos.suburstudios.com">Cursos</a>
-      <a href="https://forms.gle/y9RZXQr6BwukTivCA">Contacto</a>
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+      <ul class="menu">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="https://mixmaster.suburstudios.com/">Proyectos</a></li>
+        <li><a href="https://cursos.suburstudios.com">Cursos</a></li>
+        <li><a href="https://forms.gle/y9RZXQr6BwukTivCA">Contacto</a></li>
+      </ul>
     </nav>
-
+  
+    <!-- REDES SOCIALES -->
     <div class="social-icons-container" aria-label="Redes sociales">
       <a href="https://www.instagram.com/suburbiostudio" target="_blank" aria-label="Instagram">
         <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
@@ -195,6 +201,55 @@
         </svg>
       </a>
     </div>
+  
+    <!-- SCRIPT MENÚ DESPLEGABLE -->
+    <script>
+      const toggle = document.querySelector('.menu-toggle');
+      const menu = document.querySelector('.menu');
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('show');
+      });
+    </script>
+  
+    <!-- CSS INLINE HEADER/MENÚ -->
+    <style>
+      header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem 1rem;
+        background: #000;
+        position: relative;
+      }
+      header h1 { font-weight: 300; font-size: 3rem; margin: 0; }
+      header .slogan { font-weight: 400; letter-spacing: 0.3rem; color: #aaa; margin: 0.5rem 0 1rem; font-size: 1.25rem; }
+  
+      /* NAV */
+      .menu-toggle { display: none; font-size: 2rem; background: none; border: none; color: #fff; cursor: pointer; }
+      nav .menu { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; list-style: none; padding: 0; margin: 0; }
+      nav .menu li a { color: #fff; text-decoration: none; font-weight: 700; }
+  
+      /* REDES SOCIALES */
+      .social-icons-container { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+      .social-icons-container a { color: #fff; transition: transform 0.2s ease, color 0.2s ease; }
+      .social-icons-container a:hover { transform: scale(1.2); color: #e63946; }
+  
+      /* MÓVIL */
+      @media (max-width: 767px) {
+        .menu-toggle { display: block; }
+        nav .menu { display: none; flex-direction: column; gap: 1rem; margin-top: 0.5rem; background: #111; padding: 1rem; border-radius: 0.5rem; }
+        nav .menu.show { display: flex; }
+      }
+  
+      /* DESKTOP */
+      @media (min-width: 768px) {
+        header { flex-direction: row; justify-content: space-between; align-items: center; }
+        .social-icons-container { margin-top: 0; }
+        nav .menu { display: flex; flex-direction: row; gap: 1rem; background: none; padding: 0; }
+        .menu-toggle { display: none; }
+      }
+    </style>
   </header>
 
   <!-- HERO -->
