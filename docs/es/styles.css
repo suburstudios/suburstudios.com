@@ -1,40 +1,129 @@
 /* =======================
-   RESET Y BASE
+   RESET & BASE
 ======================= */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #111; color: #f1f1f1; font-family: 'Montserrat', sans-serif; line-height: 1.6; }
-a { text-decoration: none; color: inherit; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #111;
+  color: #f1f1f1;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+}
 
 /* =======================
    HEADER
 ======================= */
 header.header-container {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 1rem 2rem; background: #000; position: sticky; top: 0; z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #000;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.7);
 }
-header .logo img { height: 80px; }
-header .header-center { text-align: center; flex: 1; }
-header .header-center h1 { font-size: 2rem; margin-bottom: 0.3rem; }
-header .slogan { font-size: 1rem; color: #aaa; letter-spacing: 0.2rem; }
-nav .menu { display: flex; gap: 1rem; list-style: none; flex-wrap: wrap; }
-.menu-toggle { display: none; font-size: 2rem; background: none; border: none; color: #fff; cursor: pointer; }
-.social-icons-container { display: flex; gap: 1rem; }
-.social-icons-container svg { fill: #fff; transition: 0.2s; }
-.social-icons-container svg:hover { transform: scale(1.1); fill: #0af; }
+
+header .logo img {
+  height: 80px;
+}
+
+header .header-center {
+  text-align: center;
+  flex: 1;
+}
+
+header .header-center h1 {
+  font-family: 'Bruno Ace SC', cursive;
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+  color: #0af;
+}
+
+header .slogan {
+  font-size: 1rem;
+  color: #aaa;
+  letter-spacing: 0.2rem;
+}
+
+nav .menu {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+nav .menu li a {
+  color: #f1f1f1;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.3rem 0.5rem;
+  transition: color 0.3s;
+}
+
+nav .menu li a:hover {
+  color: #0af;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.social-icons-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icons-container svg {
+  fill: #fff;
+  transition: 0.2s;
+}
+
+.social-icons-container svg:hover {
+  transform: scale(1.2);
+  fill: #0af;
+}
 
 /* =======================
    HERO
 ======================= */
-.hero { position: relative; height: 70vh; overflow: hidden; }
-.hero-image { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
-.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); backdrop-filter: blur(4px); }
+.hero {
+  position: relative;
+  height: 70vh;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(4px);
+}
 
 /* =======================
    SECCIÓN SERVICIOS
 ======================= */
 #servicios {
-  padding: 4rem 2rem;
-  background: #111;
+  padding: 4rem 2rem 2rem;
   text-align: center;
 }
 
@@ -42,101 +131,101 @@ nav .menu { display: flex; gap: 1rem; list-style: none; flex-wrap: wrap; }
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: #0af;
-  letter-spacing: 0.1rem;
 }
 
 #servicios .intro-servicios {
-  max-width: 700px;
-  margin: 0 auto 3rem auto;
   font-size: 1.1rem;
   color: #ccc;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .services {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
 .service {
   background: #222;
+  padding: 1rem;
   border-radius: 1rem;
-  overflow: hidden;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
-  padding-bottom: 1rem;
-}
-
-.service img {
-  border-radius: 1rem 1rem 0 0;
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
 }
 
 .service:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.service img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .service h3 {
-  margin: 1rem 0 0.5rem;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
   color: #0af;
 }
 
 .service p {
-  padding: 0 1rem;
-  color: #ccc;
   font-size: 0.95rem;
+  color: #ccc;
 }
 
 /* =======================
-   CARRUSEL PROYECTOS
+   CARRUSEL
 ======================= */
 #proyectos {
   padding: 4rem 2rem;
-  background: #111;
   text-align: center;
 }
 
 #proyectos h2 {
   font-size: 2.5rem;
-  color: #0af;
   margin-bottom: 2rem;
+  color: #0af;
 }
 
 .carousel {
   position: relative;
   overflow: hidden;
-  padding: 0 1rem;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .carousel-item {
   flex: 0 0 auto;
   width: 23%;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   background: #111;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .carousel-item:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(255,255,255,0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 .carousel-item iframe {
   width: 100%;
-  height: 250px;
+  height: 200px;
   border: none;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 
 .carousel-button {
@@ -166,11 +255,11 @@ nav .menu { display: flex; gap: 1rem; list-style: none; flex-wrap: wrap; }
 ======================= */
 footer {
   background: #000;
-  padding: 2rem;
-  text-align: center;
   color: #aaa;
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
   font-size: 0.9rem;
-  border-top: 1px solid #222;
 }
 
 footer a {
@@ -188,6 +277,7 @@ footer a:hover {
 ======================= */
 @media (max-width: 1200px) {
   .carousel-item { width: 31%; }
+  .services { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 900px) {
@@ -195,7 +285,9 @@ footer a:hover {
   .services { grid-template-columns: 1fr; }
 }
 
-@media(max-width:767px){
+@media (max-width: 767px) {
   .carousel-item { width: 90%; }
-  header.header-container { flex-direction: column; gap: 1rem; }
+  nav .menu { display: none; flex-direction: column; }
+  nav .menu.show { display: flex; }
+  .menu-toggle { display: block; }
 }
