@@ -256,8 +256,27 @@
       /* MÓVIL */
       @media (max-width: 767px) {
         .menu-toggle { display: block; }
-        nav .menu { display: none; flex-direction: column; gap: 1rem; margin-top: 0.5rem; background: #111; padding: 1rem; border-radius: 0.5rem; }
-        nav .menu.show { display: flex; }
+      
+        nav .menu {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          margin-top: 0.5rem;
+          background: #111;
+          padding: 1rem;
+          border-radius: 0.5rem;
+          transform: scaleY(0);
+          transform-origin: top;
+          opacity: 0;
+          transition: transform 0.3s ease, opacity 0.3s ease;
+          overflow: hidden; /* <- dentro del bloque */
+        }
+      
+        nav .menu.show {
+          transform: scaleY(1);
+          opacity: 1;
+        }
+      
         .social-icons-container { position: static; justify-content: center; margin-bottom: 1rem; }
       }
     </style>
