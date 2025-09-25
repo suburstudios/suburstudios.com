@@ -126,21 +126,26 @@
       justify-content: center;
       gap: 1rem;
       flex-wrap: wrap;
+      margin-top: 1rem; /* separa del menú en móviles */
     }
+    
     .social-icons-container a {
       color: #fff;
       transition: transform 0.2s ease, color 0.2s ease;
     }
+    
     .social-icons-container a:hover {
       transform: scale(1.2);
       color: #e63946;
     }
+    
     @media (min-width: 768px) {
       header .social-icons-container {
         justify-content: flex-end;
         position: absolute;
         top: 1rem;
         right: 1rem;
+        margin-top: 0; /* quita margin extra en desktop */
       }
     }
   </style>
