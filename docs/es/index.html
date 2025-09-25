@@ -24,7 +24,13 @@
       padding: 2rem 1rem;
       position: relative;
     }
-  
+
+     /* Logo */
+    .logo img {
+      height: 50px; /* ajusta según tu diseño */
+      width: auto;
+    }
+     
     /* Título principal con Bruno Ace SC */
     header h1 {
       font-family: 'Bruno Ace SC', sans-serif;
@@ -220,35 +226,6 @@
     footer p {
       font-size: 0.9rem;
     }
-  
-    /* Redes sociales header y footer */
-    .social-icons-container {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-    }
-  
-    .social-icons-container a {
-      color: #fff;
-      transition: transform 0.2s ease, color 0.2s ease;
-    }
-  
-    .social-icons-container a:hover {
-      transform: scale(1.2);
-      color: #e63946;
-    }
-  
-    @media (min-width: 768px) {
-      header .social-icons-container {
-        justify-content: flex-end;
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        margin-top: 0;
-      }
-    }
   </style>
   
   <!-- Metricool tracking -->
@@ -268,7 +245,13 @@
   </script>
 </head>
 <body>
-  <header>
+  <header class="header-container">
+
+    <!-- LOGO -->
+    <div class="logo">
+       <img src="docs/es/images/logo_svg_web_2.png" alt="Suburbio Studios Logo" />
+    </div>
+    
     <!-- Contenedor central: título, eslogan y menú -->
     <div class="header-center">
       <h1>Suburbio Studios</h1>
@@ -314,18 +297,26 @@
       });
     </script>
   
+   <!-- ESTILOS -->
     <style>
-      header {
-        position: relative;
+      header.header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: 1.5rem 1rem;
         background: #000;
       }
   
-      /* Contenedor central */
+      /* LOGO */
+      .logo img {
+        height: 50px;
+        width: auto;
+      }
+  
+      /* CENTRO */
       .header-center {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        flex: 1;
+        text-align: center;
       }
   
       header h1 {
@@ -343,6 +334,7 @@
         font-size: 1.25rem;
       }
   
+      /* NAV */
       nav .menu {
         display: flex;
         flex-wrap: wrap;
@@ -369,13 +361,10 @@
         margin-bottom: 0.5rem;
       }
   
-      /* Redes sociales */
+      /* REDES SOCIALES */
       .social-icons-container {
         display: flex;
         gap: 1rem;
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
       }
   
       .social-icons-container a {
@@ -388,38 +377,35 @@
         color: #e63946;
       }
   
-      /* Móvil */
+      /* RESPONSIVE */
       @media (max-width: 767px) {
-        .menu-toggle { 
-          display: block; 
-          margin: 0.5rem auto; /* centrado horizontal con margen arriba/abajo */
-          align-self: center;   /* asegura centrado dentro de flex container */
+        header.header-container {
+          flex-direction: column;
+          align-items: center;
         }
-      
+  
+        .menu-toggle {
+          display: block;
+          margin: 0.5rem auto;
+        }
+  
         nav .menu {
-          display: flex;
           flex-direction: column;
           gap: 1rem;
           margin-top: 0.5rem;
           background: #111;
           padding: 1rem;
           border-radius: 0.5rem;
-          transform: scaleY(0);
-          transform-origin: top;
-          opacity: 0;
-          overflow: hidden;
-          transition: transform 0.3s ease, opacity 0.3s ease;
+          display: none;
         }
-      
+  
         nav .menu.show {
-          transform: scaleY(1);
-          opacity: 1;
+          display: flex;
         }
-      
+  
         .social-icons-container {
-          position: static;
+          margin-top: 1rem;
           justify-content: center;
-          margin-bottom: 1rem;
         }
       }
     </style>
