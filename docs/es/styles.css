@@ -5,6 +5,7 @@ body {
   background: #111;
   color: #f1f1f1;
   font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
 }
 
 /* Header */
@@ -12,12 +13,12 @@ header.header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
   background: #000;
 }
 
 .logo img {
-  height: 100px;
+  height: 80px;
   width: auto;
 }
 
@@ -28,16 +29,16 @@ header.header-container {
 header h1 {
   font-family: 'Bruno Ace SC', sans-serif;
   font-weight: normal;
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin: 0;
 }
 
 .slogan {
   font-weight: 400;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.2rem;
   color: #aaa;
   margin: 0.5rem 0 1rem;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
 }
 
 /* Menú */
@@ -55,6 +56,13 @@ nav .menu li a {
   color: #fff;
   text-decoration: none;
   font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+nav .menu li a:hover {
+  background: #222;
 }
 
 .menu-toggle {
@@ -74,6 +82,7 @@ nav .menu li a {
 
 .social-icons-container a {
   color: #fff;
+  font-size: 1.3rem;
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
@@ -85,7 +94,7 @@ nav .menu li a {
 /* Hero */
 .hero {
   position: relative;
-  height: 80vh;
+  height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,8 +120,8 @@ section {
 
 section h2 {
   font-weight: 700;
-  font-size: 2.75rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
   border-bottom: 2px solid #444;
   padding-bottom: 0.5rem;
   text-align: center;
@@ -121,20 +130,26 @@ section h2 {
 /* Servicios */
 .services {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
 
 .service {
-  background: #222;
-  padding: 1rem;
+  background: #1a1a1a;
+  padding: 1.5rem;
   border-radius: 1rem;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
 
 .service img {
   width: 100%;
-  height: 150px;
+  height: 160px;
   object-fit: cover;
   border-radius: 0.5rem;
 }
@@ -143,7 +158,7 @@ section h2 {
 .btn-comparaciones, .btn-contacto, .btn-upwork {
   display: inline-block;
   padding: 0.8rem 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
   text-decoration: none;
   border-radius: 8px;
   transition: background 0.3s ease, transform 0.3s ease;
@@ -160,22 +175,14 @@ section h2 {
   transform: scale(1.05);
 }
 
-.btn-contacto {
+.btn-contacto, .btn-upwork {
   background-color: #14a800;
   color: #fff;
 }
 
-.btn-contacto:hover {
+.btn-contacto:hover, .btn-upwork:hover {
   background-color: #0e7a00;
-}
-
-.btn-upwork {
-  background-color: #14a800;
-  color: #fff;
-}
-
-.btn-upwork:hover {
-  background-color: #0e7a00;
+  transform: scale(1.05);
 }
 
 /* Carrusel */
@@ -188,11 +195,11 @@ section h2 {
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease;
+  gap: 1rem;
 }
 
 .carousel-item {
-  flex: 0 0 30%;
-  margin: 0 10px;
+  flex: 0 0 32%;
 }
 
 .carousel-item iframe {
@@ -206,17 +213,19 @@ section h2 {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
+  background: #222;
   border: none;
   color: #fff;
-  font-size: 2rem;
-  padding: 0.5rem;
+  font-size: 1.8rem;
+  padding: 0.5rem 0.8rem;
   cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
   z-index: 10;
 }
 
-.carousel-button.prev { left: 0; }
-.carousel-button.next { right: 0; }
+.carousel-button.prev { left: 1rem; }
+.carousel-button.next { right: 1rem; }
 
 /* Postproducción */
 .postgrid {
@@ -235,15 +244,15 @@ section h2 {
 
 /* Upwork */
 .upwork-card {
-  max-width: 400px;
+  max-width: 360px;
   margin: 2rem auto;
   border: 2px solid #14a800;
   border-radius: 16px;
   overflow: hidden;
-  background: #000;
+  background: #111;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
 }
 
 .upwork-header {
@@ -251,37 +260,40 @@ section h2 {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background: #111;
+  background: #1a1a1a;
   border-bottom: 2px solid #14a800;
 }
 
 .upwork-header img {
-  height: 40px;
+  height: 35px;
 }
 
 .upwork-body {
-  padding: 1.5rem;
+  padding: 1.2rem;
 }
 
 .upwork-body img {
-  width: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .upwork-body h3 {
-  margin: 0.5rem 0;
+  margin: 0.3rem 0;
+  font-size: 1.1rem;
 }
 
 .upwork-body p {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #ccc;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 /* Contacto */
 .contact {
   text-align: center;
+  margin: 3rem 0;
 }
 
 /* Footer */
