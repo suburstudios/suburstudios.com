@@ -9,12 +9,33 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="/favicon.png" type="image/png">
 
+  <!-- Font Awesome para iconos de redes sociales -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Km8x5eD1nHqkkx6RpsXGpZl0M6Dx+Rrr3sGkueWgH2Kp+svkPiJ0yo9yQvKX4kq2L1vS2+eXvZkzXe6i0kM1Vw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <style>
     body { margin: 0; padding: 0; background: #111; color: #f1f1f1; font-family: 'Montserrat', sans-serif; }
-    header, footer { background: #000; text-align: center; padding: 2rem 1rem; }
+    header, footer { background: #000; text-align: center; padding: 2rem 1rem; position: relative; }
     header h1 { font-weight: 300; font-size: 3rem; margin: 0; }
     .slogan { font-weight: 400; letter-spacing: 0.3rem; color: #aaa; margin: 1rem 0 2rem; font-size: 1.25rem; }
     nav a { color: #fff; text-decoration: none; font-weight: 700; margin: 0 1rem; }
+
+    /* Iconos de redes sociales */
+    .social-icons {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .social-icons a {
+      color: #fff;
+      font-size: 1.2rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: #e63946;
+      transform: scale(1.2);
+    }
 
     .hero {
       position: relative;
@@ -147,6 +168,13 @@
       <a href="https://cursos.suburstudios.com">Cursos</a>
       <a href="https://forms.gle/y9RZXQr6BwukTivCA">Contacto</a>
     </nav>
+
+    <!-- Iconos de redes sociales -->
+    <div class="social-icons">
+      <a href="https://www.instagram.com/suburbiostudios" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/suburbiostudios" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.youtube.com/@suburbiostudios" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
   </header>
 
   <div class="hero">
@@ -157,6 +185,8 @@
     <h1>Producción musical, diseño sonoro y postproducción a otro nivel</h1>
     <div class="slogan-hero">MAKE NEW NOISE</div>
   </div>
+
+  <!-- Aquí va todo el contenido de secciones: Servicios, Upwork, Proyectos, Contacto, Banner, Footer tal como lo tenías -->
 
   <section id="servicios">
     <h2>Servicios</h2>
@@ -191,65 +221,40 @@
     </div>
   </section>
 
+  <!-- Upwork -->
   <section id="upwork" style="text-align:center; padding:3rem 1rem;">
-    <div style="
-      max-width: 400px;
-      margin: auto;
-      border: 2px solid #14a800;
-      border-radius: 16px;
-      overflow: hidden;
-      font-family: 'Montserrat', sans-serif;
-      background: #000;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    ">
+    <div style="max-width: 400px; margin: auto; border: 2px solid #14a800; border-radius: 16px; overflow: hidden; font-family: 'Montserrat', sans-serif; background: #000; box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
       <div style="background:#14a800; color:white; padding:15px; display:flex; align-items:center; gap:10px; justify-content:center;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Upwork-logo.svg/2560px-Upwork-logo.svg.png" 
-             alt="Upwork" style="height:22px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Upwork-logo.svg/2560px-Upwork-logo.svg.png" alt="Upwork" style="height:22px;">
         <span style="font-size:18px; font-weight:700;">Disponible en Upwork</span>
       </div>
       <div style="padding:20px; text-align:center;">
         <img src="images/logo_new_final.png" alt="Foto" style="width:80px; height:80px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
         <h3 style="margin:5px 0; color:#fff;"> Suburbio Studios</h3>
         <p style="font-size:14px; color:#ccc;">Producción Musical | Diseño Sonoro | Postproducción</p>
-        <a href="https://www.upwork.com/freelancers/~0140bf787d71508eab?mp_source=share" target="_blank" style="
-          display:inline-block; 
-          margin-top:12px;
-          padding:12px 24px; 
-          background:#14a800; 
-          color:white; 
-          font-weight:700; 
-          text-decoration:none; 
-          border-radius:8px;
-          transition:0.3s;
-        " onmouseover="this.style.background='#0e7a00'" onmouseout="this.style.background='#14a800'">
-          🚀 Contrátanos en Upwork
-        </a>
+        <a href="https://www.upwork.com/freelancers/~0140bf787d71508eab?mp_source=share" target="_blank" style="display:inline-block; margin-top:12px; padding:12px 24px; background:#14a800; color:white; font-weight:700; text-decoration:none; border-radius:8px; transition:0.3s;" onmouseover="this.style.background='#0e7a00'" onmouseout="this.style.background='#14a800'">🚀 Contrátanos en Upwork</a>
       </div>
     </div>
   </section>
 
+  <!-- Proyectos -->
   <section id="proyectos">
     <h2>Proyectos Destacados</h2>
     <h3 style="text-align:center; margin-top:2rem;">Producción Musical, Mezcla y Mastering</h3>
-    <p class="proyectos-destacados">
-    	Aquí puedes escuchar proyectos de bandas que confiaron en mis servicios de mezcla y mastering online
-    </p>
-
+    <p class="proyectos-destacados">Aquí puedes escuchar proyectos de bandas que confiaron en mis servicios de mezcla y mastering online</p>
     <div style="text-align:center; margin: 2rem 0;">
-      <a href="https://mixmaster.suburstudios.com" target="_blank" class="btn-comparaciones">
-        🔊 Escucha comparaciones Antes / Después
-      </a>
+      <a href="https://mixmaster.suburstudios.com" target="_blank" class="btn-comparaciones">🔊 Escucha comparaciones Antes / Después</a>
     </div>
-    
+
     <div class="carousel">
       <button class="carousel-button prev">&#10094;</button>
       <div class="carousel-track">
         <div class="carousel-item"><iframe src="https://www.youtube.com/embed/3SP97L0jJnI" allowfullscreen></iframe></div>
+        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/7TEt6f9OzCE" allowfullscreen></iframe></div>
         <div class="carousel-item"><iframe src="https://www.youtube.com/embed/rAdbh1hMQrI" allowfullscreen></iframe></div>
+        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/pke7HYnqTKw" allowfullscreen></iframe></div>
         <div class="carousel-item"><iframe src="https://www.youtube.com/embed/8dPvSL8GCjQ" allowfullscreen></iframe></div>
         <div class="carousel-item"><iframe src="https://www.youtube.com/embed/MNJDjKkKVJY" allowfullscreen></iframe></div>
-        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/pke7HYnqTKw" allowfullscreen></iframe></div>
-        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/7TEt6f9OzCE" allowfullscreen></iframe></div>
       </div>
       <button class="carousel-button next">&#10095;</button>
     </div>
@@ -262,12 +267,14 @@
     </div>
   </section>
 
+  <!-- Contacto -->
   <section id="contacto" class="contact">
     <h2>Contacto</h2>
     <p>¿Tienes un proyecto en mente? Escríbenos y te responderemos lo antes posible.</p>
     <a href="https://docs.google.com/forms/d/1LK2Yl3Xdtbk-kLGKyRvqiJZak1pYk5XQBoExB3215v8" target="_blank">Formulario de Contacto</a>
   </section>
 
+  <!-- Banner Plugin Boutique -->
   <section style="text-align: center; padding: 2rem 0;">
     <a href="https://www.pluginboutique.com/articles/1769?a_aid=687e62a06155f&amp;a_bid=2c9595a5" target="_top">
       <img src="//loopmasters.postaffiliatepro.com/accounts/default1/hfwq3b89wu2/2c9595a5.jpg" alt="Plugin Boutique Banner" width="300" height="100" />
@@ -278,6 +285,7 @@
     <p>&copy; 2025 Suburbio Studios. Todos los derechos reservados.</p>
   </footer>
 
+  <!-- Script Carousel -->
   <script>
     const track = document.querySelector('.carousel-track');
     const items = Array.from(track.children);
