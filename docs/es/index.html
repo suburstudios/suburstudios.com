@@ -4,18 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suburbio Studios</title>
-  <!-- Fuentes Montserrat -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Fuente Xanh Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="/favicon.png" type="image/png">
 
-  <style>
-    body { margin: 0; padding: 0; background: #111; color: #f1f1f1; font-family: 'Montserrat', sans-serif; }
-    header, footer { background: #000; text-align: center; padding: 2rem 1rem; position: relative; }
-    header h1 { font-weight: 300; font-size: 3rem; margin: 0; }
-    .slogan { font-weight: 400; letter-spacing: 0.3rem; color: #aaa; margin: 1rem 0 2rem; font-size: 1.25rem; }
-    nav a { color: #fff; text-decoration: none; font-weight: 700; margin: 0 1rem; }
-
+   <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: #f1f1f1;
+      font-family: 'Montserrat', sans-serif;
+    }
+  
+    header, footer {
+      background: #000;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+    }
+  
+    /* Título principal con Xanh Mono */
+    header h1 {
+      font-family: 'Xanh Mono', monospace;
+      font-weight: 300;
+      font-size: 3rem;
+      margin: 0;
+    }
+  
+    .slogan {
+      font-weight: 400;
+      letter-spacing: 0.3rem;
+      color: #aaa;
+      margin: 1rem 0 2rem;
+      font-size: 1.25rem;
+    }
+  
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      margin: 0 1rem;
+    }
+  
     .hero {
       position: relative;
       height: 80vh;
@@ -27,7 +59,7 @@
       padding: 0 1rem;
       overflow: hidden;
     }
-
+  
     .hero video {
       position: absolute;
       top: 0;
@@ -37,7 +69,7 @@
       object-fit: cover;
       z-index: -1;
     }
-
+  
     .hero h1 {
       font-size: 2.5rem;
       background: rgba(0,0,0,0.5);
@@ -45,14 +77,20 @@
       border-radius: 0.5rem;
       margin: 0;
     }
+  
     .hero .slogan-hero {
       font-size: 1.75rem;
       font-weight: 300;
       letter-spacing: 0.4rem;
       margin-top: 1rem;
     }
-
-    section { padding: 4rem 2rem; max-width: 1200px; margin: auto; }
+  
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+  
     section h2 {
       font-weight: 700;
       font-size: 2.75rem;
@@ -61,12 +99,28 @@
       padding-bottom: 0.5rem;
       text-align: center;
     }
-
+  
     /* Servicios */
-    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-    .service { background: #222; padding: 1rem; border-radius: 1rem; text-align: center; }
-    .service img { width: 100%; height: 150px; object-fit: cover; border-radius: 0.5rem; }
-
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+  
+    .service {
+      background: #222;
+      padding: 1rem;
+      border-radius: 1rem;
+      text-align: center;
+    }
+  
+    .service img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+  
     /* Botón comparaciones */
     .btn-comparaciones {
       display: inline-block;
@@ -80,23 +134,42 @@
       font-size: 1.1rem;
       animation: pulse 2s infinite;
     }
-
+  
     .btn-comparaciones:hover {
       background-color: #c82333;
       transform: scale(1.05);
     }
-
+  
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.05); }
       100% { transform: scale(1); }
     }
-
-    /* Carrusel de 3 items - Producción, Mezcla y Mastering */
-    .carousel { position: relative; overflow: hidden; margin: 2rem 0; }
-    .carousel-track { display: flex; transition: transform 0.5s ease; }
-    .carousel-item { flex: 0 0 30%; margin: 0 10px; }
-    .carousel-item iframe { width: 100%; height: 180px; border: none; border-radius: 0.5rem; }
+  
+    /* Carrusel */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+  
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+  
+    .carousel-item {
+      flex: 0 0 30%;
+      margin: 0 10px;
+    }
+  
+    .carousel-item iframe {
+      width: 100%;
+      height: 180px;
+      border: none;
+      border-radius: 0.5rem;
+    }
+  
     .carousel-button {
       position: absolute;
       top: 50%;
@@ -109,47 +182,75 @@
       cursor: pointer;
       z-index: 10;
     }
+  
     .carousel-button.prev { left: 0; }
     .carousel-button.next { right: 0; }
-
-    /* Sección Postproducción - Grid */
-    .postgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
-    .postgrid iframe { width: 100%; height: 200px; border: none; border-radius: 0.5rem; }
-
-    .contact { text-align: center; margin-top: 4rem; }
-    .contact a { display: inline-block; margin-top: 1rem; padding: 1rem 2rem; background-color: #0af; color: #fff; text-decoration: none; border-radius: 1rem; font-weight: 700; }
-    footer p { font-size: 0.9rem; }
-
+  
+    /* Postproducción */
+    .postgrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+  
+    .postgrid iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+      border-radius: 0.5rem;
+    }
+  
+    .contact {
+      text-align: center;
+      margin-top: 4rem;
+    }
+  
+    .contact a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 1rem 2rem;
+      background-color: #0af;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 1rem;
+      font-weight: 700;
+    }
+  
+    footer p {
+      font-size: 0.9rem;
+    }
+  
     /* Redes sociales header y footer */
     .social-icons-container {
       display: flex;
       justify-content: center;
       gap: 1rem;
       flex-wrap: wrap;
-      margin-top: 1rem; /* separa del menú en móviles */
+      margin-top: 1rem;
     }
-    
+  
     .social-icons-container a {
       color: #fff;
       transition: transform 0.2s ease, color 0.2s ease;
     }
-    
+  
     .social-icons-container a:hover {
       transform: scale(1.2);
       color: #e63946;
     }
-    
+  
     @media (min-width: 768px) {
       header .social-icons-container {
         justify-content: flex-end;
         position: absolute;
         top: 1rem;
         right: 1rem;
-        margin-top: 0; /* quita margin extra en desktop */
+        margin-top: 0;
       }
     }
   </style>
-
+  
   <!-- Metricool tracking -->
   <script>
     function loadScript(a){
