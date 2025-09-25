@@ -1,51 +1,51 @@
-// Selección de elementos
 const track = document.querySelector('.carousel-track');
 const items = Array.from(track.children);
 const prevButton = document.querySelector('.carousel-button.prev');
 const nextButton = document.querySelector('.carousel-button.next');
 
-// Definir el ancho de cada item (incluyendo margen)
-const itemStyle = getComputedStyle(items[0]);
-const itemMargin = parseInt(itemStyle.marginLeft) + parseInt(itemStyle.marginRight);
-const itemWidth = items[0].offsetWidth + itemMargin;
-
-// Posicionar cada item
-items.forEach((item, index) => {
-  item.style.left = `${index * itemWidth}px`;
-});
-
 let currentIndex = 0;
+let itemWidth;
 
-// Función para mover el track
-function moveToIndex(index) {
-  track.style.transform = `translateX(-${index * itemWidth}px)`;
-  currentIndex = index;
-  checkButtons();
+// Clonar items para loop infinito
+items.forEach(item => {
+  const cloneFirst = item.cloneNode(true);
+  const cloneLast = item.cloneNode(true);
+  track.appendChild(cloneFirst);
+  track.insertBefore(cloneLast, track.firstChild);
+});
+
+// Actualizar items y ancho
+let allItems = Array.from(track.children);
+function updateItemWidth() {
+  itemWidth = allItems[0].getBoundingClientRect().width + 16; // gap
+  track.style.transform = `translateX(-${itemWidth * (currentIndex + items.length)}px)`;
+}
+updateItemWidth();
+
+// Mover carrusel
+function moveCarousel(direction) {
+  currentIndex += direction;
+  track.style.transition = 'transform 0.5s ease-in-out';
+  track.style.transform = `translateX(-${itemWidth * (currentIndex + items.length)}px)`;
+  
+  // Loop infinito
+  track.addEventListener('transitionend', () => {
+    if(currentIndex >= items.length) {
+      currentIndex = 0;
+      track.style.transition = 'none';
+      track.style.transform = `translateX(-${itemWidth * (currentIndex + items.length)}px)`;
+    }
+    if(currentIndex < 0) {
+      currentIndex = items.length - 1;
+      track.style.transition = 'none';
+      track.style.transform = `translateX(-${itemWidth * (currentIndex + items.length)}px)`;
+    }
+  }, { once: true });
 }
 
-// Función para habilitar/deshabilitar botones
-function checkButtons() {
-  prevButton.disabled = currentIndex === 0;
-  nextButton.disabled = currentIndex >= items.length - Math.floor(track.parentElement.offsetWidth / itemWidth);
-}
+// Botones
+nextButton.addEventListener('click', () => moveCarousel(1));
+prevButton.addEventListener('click', () => moveCarousel(-1));
 
-// Eventos de botones
-prevButton.addEventListener('click', () => {
-  if (currentIndex > 0) moveToIndex(currentIndex - 1);
-});
-
-nextButton.addEventListener('click', () => {
-  if (currentIndex < items.length - 1) moveToIndex(currentIndex + 1);
-});
-
-// Inicializar
-checkButtons();
-
-// Opcional: Reajustar al cambiar el tamaño de ventana
-window.addEventListener('resize', () => {
-  const newItemWidth = items[0].offsetWidth + itemMargin;
-  items.forEach((item, index) => {
-    item.style.left = `${index * newItemWidth}px`;
-  });
-  moveToIndex(currentIndex);
-});
+// Responsive
+window.addEventListener('resize', () => updateItemWidth());
