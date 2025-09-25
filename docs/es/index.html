@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="/favicon.png" type="image/png">
 
-  <!-- Font Awesome para iconos de redes sociales -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Km8x5eD1nHqkkx6RpsXGpZl0M6Dx+Rrr3sGkueWgH2Kp+svkPiJ0yo9yQvKX4kq2L1vS2+eXvZkzXe6i0kM1Vw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Font Awesome Kit (funciona seguro) -->
+  <script src="https://kit.fontawesome.com/tuKitID.js" crossorigin="anonymous"></script>
 
   <style>
     body { margin: 0; padding: 0; background: #111; color: #f1f1f1; font-family: 'Montserrat', sans-serif; }
@@ -29,7 +29,7 @@
     }
     .social-icons a {
       color: #fff;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       transition: color 0.3s ease, transform 0.3s ease;
     }
     .social-icons a:hover {
@@ -113,7 +113,7 @@
       100% { transform: scale(1); }
     }
 
-    /* Carrusel de 3 items - Producción, Mezcla y Mastering */
+    /* Carrusel */
     .carousel { position: relative; overflow: hidden; margin: 2rem 0; }
     .carousel-track { display: flex; transition: transform 0.5s ease; }
     .carousel-item { flex: 0 0 30%; margin: 0 10px; }
@@ -139,24 +139,17 @@
 
     .contact { text-align: center; margin-top: 4rem; }
     .contact a { display: inline-block; margin-top: 1rem; padding: 1rem 2rem; background-color: #0af; color: #fff; text-decoration: none; border-radius: 1rem; font-weight: 700; }
-    footer p { font-size: 0.9rem; margin-bottom: 0.5rem; }
 
-    /* Iconos de redes en footer */
+    footer p { font-size: 0.9rem; margin:0; }
     footer .social-icons-footer {
+      margin-top: 1rem;
       display: flex;
       justify-content: center;
       gap: 1rem;
-      margin-top: 0.5rem;
     }
-    footer .social-icons-footer a {
-      color: #fff;
-      font-size: 1.2rem;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-    footer .social-icons-footer a:hover {
-      color: #e63946;
-      transform: scale(1.2);
-    }
+    footer .social-icons-footer a { color: #fff; font-size: 1.3rem; transition: color 0.3s ease, transform 0.3s ease; }
+    footer .social-icons-footer a:hover { color: #e63946; transform: scale(1.2); }
+
   </style>
 
   <!-- Metricool tracking -->
@@ -186,7 +179,7 @@
       <a href="https://forms.gle/y9RZXQr6BwukTivCA">Contacto</a>
     </nav>
 
-    <!-- Iconos de redes sociales header -->
+    <!-- Iconos de redes sociales -->
     <div class="social-icons">
       <a href="https://www.instagram.com/suburbiostudio" target="_blank"><i class="fab fa-instagram"></i></a>
       <a href="https://www.tiktok.com/@suburbiostudio" target="_blank"><i class="fab fa-tiktok"></i></a>
@@ -204,7 +197,7 @@
     <div class="slogan-hero">MAKE NEW NOISE</div>
   </div>
 
-  <!-- Servicios -->
+  <!-- Sección Servicios -->
   <section id="servicios">
     <h2>Servicios</h2>
     <p class="intro-servicios" style="text-align:center;">
@@ -240,7 +233,7 @@
 
   <!-- Upwork -->
   <section id="upwork" style="text-align:center; padding:3rem 1rem;">
-    <div style="max-width: 400px; margin: auto; border: 2px solid #14a800; border-radius: 16px; overflow: hidden; font-family: 'Montserrat', sans-serif; background: #000; box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
+    <div style="max-width: 400px; margin: auto; border: 2px solid #14a800; border-radius: 16px; overflow: hidden; background: #000; box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
       <div style="background:#14a800; color:white; padding:15px; display:flex; align-items:center; gap:10px; justify-content:center;">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Upwork-logo.svg/2560px-Upwork-logo.svg.png" alt="Upwork" style="height:22px;">
         <span style="font-size:18px; font-weight:700;">Disponible en Upwork</span>
