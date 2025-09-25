@@ -1,38 +1,57 @@
-// ===== MENU RESPONSIVO =====
-const toggle = document.querySelector(".menu-toggle");
+// --- MENU RESPONSIVE ---
+const menuToggle = document.querySelector(".menu-toggle");
 const menu = document.querySelector(".menu");
 
-if (toggle) {
-  toggle.addEventListener("click", () => {
+if (menuToggle) {
+  menuToggle.addEventListener("click", () => {
     menu.classList.toggle("active");
   });
 }
 
-// ===== CARRUSEL =====
-const track = document.querySelector('.carousel-track');
-const prevBtn = document.querySelector('.carousel-button.prev');
-const nextBtn = document.querySelector('.carousel-button.next');
-let index = 0;
+// --- CAROUSEL ---
+const track = document.querySelector(".carousel-track");
+const items = document.querySelectorAll(".carousel-item");
+const prevButton = document.querySelector(".carousel-button.prev");
+const nextButton = document.querySelector(".carousel-button.next");
+
+let currentIndex = 0;
 
 function updateCarousel() {
-  if (!track) return;
-  const itemWidth = track.querySelector('.carousel-item').offsetWidth + 16;
-  track.style.transform = `translateX(-${index * itemWidth}px)`;
+  const width = items[0].getBoundingClientRect().width;
+  track.style.transform = `translateX(-${currentIndex * width}px)`;
 }
 
-if (prevBtn && nextBtn && track) {
-  prevBtn.addEventListener('click', () => {
-    if (index > 0) index--;
+if (nextButton) {
+  nextButton.addEventListener("click", () => {
+    currentIndex++;
+    if (currentIndex >= items.length) {
+      currentIndex = 0; // vuelve al inicio
+    }
     updateCarousel();
   });
+}
 
-  nextBtn.addEventListener('click', () => {
-    const items = track.children.length;
-    const visibleCount = window.innerWidth > 1100 ? 2 : 1;
-    if (index < items - visibleCount) index++;
+if (prevButton) {
+  prevButton.addEventListener("click", () => {
+    currentIndex--;
+    if (currentIndex < 0) {
+      currentIndex = items.length - 1; // va al último
+    }
     updateCarousel();
   });
+}
 
-  window.addEventListener('resize', updateCarousel);
+// --- AUTO-SLIDE cada 8s ---
+setInterval(() => {
+  currentIndex++;
+  if (currentIndex >= items.length) {
+    currentIndex = 0;
+  }
   updateCarousel();
-}
+}, 8000);
+
+// --- Ajustar al redimensionar ---
+window.addEventListener("resize", updateCarousel);
+
+// Inicializar
+updateCarousel();
