@@ -67,14 +67,14 @@
       overflow: hidden;
     }
   
-    .hero video {
+    .hero-image {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      z-index: -1;
+      object-fit: cover; /* mantiene proporciones y recorta si hace falta */
+      z-index: -1;       /* detrás del texto */
     }
   
     .hero h1 {
@@ -411,15 +411,10 @@
     </style>
   </header>
 
-  <!-- HERO -->
-  <div class="hero">
-    <video autoplay loop muted>
-      <source src="https://suburstudios.com/videos/web_ppca_video.mp4" type="video/mp4">
-      Tu navegador no soporta la etiqueta de video.
-    </video>
-    <h1>Music production, sound design and post-production to next level</h1>
-    <div class="slogan-hero">MAKE NEW NOISE</div>
-  </div>
+    <!-- HERO -->
+    <div class="hero">
+      <img src="images/less/wall_new_web_2.webp" alt="Suburbio Studios Hero" class="hero-image">
+    </div>
 
   <!-- SECCIONES (Servicios, Upwork, Proyectos, Contacto) -->
   <section id="services">
@@ -432,21 +427,21 @@
     <div class="services">
       <div class="service">
         <a href="https://forms.gle/vCUfEAhDaetmrdfx6" target="_blank">
-          <img src="images/music_production.jpg" alt="Producción musical">
+          <img src="images/less/music_production.webp" alt="Producción musical">
           <h3>Music Production</h3>
           <p>Composition, arrangements, beatmaking, and musical direction tailored to your artistic vision.</p>
         </a>
       </div>
       <div class="service">
         <a href="https://forms.gle/vCUfEAhDaetmrdfx6" target="_blank">
-          <img src="images/mix_master.jpg" alt="Mezcla y Mastering">
+          <img src="images/less/mix_master.webp" alt="Mezcla y Mastering">
           <h3>Mixing and Mastering</h3>
           <p>Optimize your sound to compete on all platforms with clarity, punch, and balance.</p>
         </a>
       </div>
       <div class="service">
         <a href="https://forms.gle/vCUfEAhDaetmrdfx6" target="_blank">
-          <img src="images/postproduction.jpg" alt="Postproducción de Sonido">
+          <img src="images/less/postproduction.webp" alt="Postproducción de Sonido">
           <h3>Sound Postproduction</h3>
           <p>Editing, sound design, foley, environments, and final mix for film, series, and video games.</p>
         </a>
