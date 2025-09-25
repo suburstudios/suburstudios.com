@@ -139,7 +139,24 @@
 
     .contact { text-align: center; margin-top: 4rem; }
     .contact a { display: inline-block; margin-top: 1rem; padding: 1rem 2rem; background-color: #0af; color: #fff; text-decoration: none; border-radius: 1rem; font-weight: 700; }
-    footer p { font-size: 0.9rem; }
+    footer p { font-size: 0.9rem; margin-bottom: 0.5rem; }
+
+    /* Iconos de redes en footer */
+    footer .social-icons-footer {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    footer .social-icons-footer a {
+      color: #fff;
+      font-size: 1.2rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    footer .social-icons-footer a:hover {
+      color: #e63946;
+      transform: scale(1.2);
+    }
   </style>
 
   <!-- Metricool tracking -->
@@ -169,7 +186,7 @@
       <a href="https://forms.gle/y9RZXQr6BwukTivCA">Contacto</a>
     </nav>
 
-    <!-- Iconos de redes sociales -->
+    <!-- Iconos de redes sociales header -->
     <div class="social-icons">
       <a href="https://www.instagram.com/suburbiostudio" target="_blank"><i class="fab fa-instagram"></i></a>
       <a href="https://www.tiktok.com/@suburbiostudio" target="_blank"><i class="fab fa-tiktok"></i></a>
@@ -187,11 +204,10 @@
     <div class="slogan-hero">MAKE NEW NOISE</div>
   </div>
 
-  <!-- Aquí va todo el contenido de secciones: Servicios, Upwork, Proyectos, Contacto, Banner, Footer tal como lo tenías -->
-
+  <!-- Servicios -->
   <section id="servicios">
     <h2>Servicios</h2>
-    <p class="intro-servicios">
+    <p class="intro-servicios" style="text-align:center;">
       ¿Perteneces a una banda o eres un artista solista y necesitas 
       mezcla y masterización online para tu música? 
       Si buscas un sonido potente, claro y profesional, aquí tienes tu estudio.
@@ -286,6 +302,12 @@
 
   <footer>
     <p>&copy; 2025 Suburbio Studios. Todos los derechos reservados.</p>
+    <div class="social-icons-footer">
+      <a href="https://www.instagram.com/suburbiostudio" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@suburbiostudio" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.facebook.com/suburstudios" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.youtube.com/channel/UCsItmwJBywstgw_Twjzrq-A" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
   </footer>
 
   <!-- Script Carousel -->
