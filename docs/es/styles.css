@@ -9,10 +9,10 @@
 
 body {
   background: #111;
-  color: #f1f1f1;
+  color: #fff;
   font-family: 'Montserrat', sans-serif;
   line-height: 1.6;
-  padding: 0 1rem; /* pequeño margen lateral */
+  padding: 0 1rem;
 }
 
 a { text-decoration: none; color: inherit; }
@@ -32,9 +32,7 @@ header.header-container {
   box-shadow: 0 2px 10px rgba(0,0,0,0.7);
 }
 
-header .logo img {
-  height: 70px;
-}
+header .logo img { height: 70px; }
 
 header .header-center {
   text-align: center;
@@ -45,14 +43,10 @@ header .header-center h1 {
   font-family: 'Bruno Ace SC', cursive;
   font-size: 2.2rem;
   margin-bottom: 0.2rem;
-  color: #0af;
+  color: #fff;
 }
 
-header .slogan {
-  font-size: 1rem;
-  color: #aaa;
-  letter-spacing: 0.2rem;
-}
+header .slogan { font-size: 1rem; color: #aaa; letter-spacing: 0.2rem; }
 
 nav .menu {
   display: flex;
@@ -64,7 +58,7 @@ nav .menu {
 }
 
 nav .menu li a {
-  color: #f1f1f1;
+  color: #fff;
   font-weight: 500;
   padding: 0.4rem 0.8rem;
   transition: all 0.3s;
@@ -76,14 +70,7 @@ nav .menu li a:hover {
   background: rgba(10, 170, 255, 0.1);
 }
 
-.menu-toggle {
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-}
+.menu-toggle { display: none; font-size: 2rem; background: none; border: none; color: #fff; cursor: pointer; }
 
 .social-icons-container {
   display: flex;
@@ -127,24 +114,13 @@ nav .menu li a:hover {
 /* =======================
    SECCIÓN SERVICIOS
 ======================= */
-#servicios {
-  padding: 4rem 1rem 2rem;
-  text-align: center;
-}
+#servicios { padding: 4rem 1rem 2rem; text-align: center; }
 
-#servicios h2 {
-  font-size: 2.8rem;
-  margin-bottom: 1rem;
-  color: #0af;
-}
+#servicios h2 { font-size: 2.8rem; margin-bottom: 1rem; color: #fff; }
 
 #servicios .intro-servicios {
-  font-size: 1.1rem;
-  color: #ccc;
-  margin-bottom: 3rem;
-  max-width: 750px;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 1.1rem; color: #ccc; margin-bottom: 3rem;
+  max-width: 750px; margin: 0 auto;
 }
 
 .services {
@@ -179,27 +155,17 @@ nav .menu li a:hover {
 .service h3 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  color: #0af;
+  color: #fff;
 }
 
-.service p {
-  font-size: 1rem;
-  color: #ccc;
-}
+.service p { font-size: 1rem; color: #ccc; }
 
 /* =======================
    CARRUSEL & VIDEOS
 ======================= */
-#proyectos {
-  padding: 4rem 1rem;
-  text-align: center;
-}
+#proyectos { padding: 4rem 1rem; text-align: center; }
 
-#proyectos h2 {
-  font-size: 2.8rem;
-  margin-bottom: 2rem;
-  color: #0af;
-}
+#proyectos h2 { font-size: 2.8rem; margin-bottom: 2rem; color: #fff; }
 
 .carousel {
   position: relative;
@@ -236,6 +202,12 @@ nav .menu li a:hover {
   border-radius: 0.5rem;
 }
 
+.subsection-title {
+  font-size: 2rem;
+  margin-top: 3rem;
+  color: #fff;
+}
+
 .postgrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -253,21 +225,11 @@ nav .menu li a:hover {
 /* =======================
    CONTACTO
 ======================= */
-.contact {
-  padding: 4rem 1rem;
-  text-align: center;
-}
+.contact { padding: 4rem 1rem; text-align: center; }
 
-.contact h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: #0af;
-}
+.contact h2 { font-size: 2.5rem; margin-bottom: 1rem; color: #fff; }
 
-.contact p {
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-}
+.contact p { font-size: 1rem; margin-bottom: 1.5rem; }
 
 .contact a {
   display: inline-block;
@@ -279,10 +241,7 @@ nav .menu li a:hover {
   transition: all 0.3s;
 }
 
-.contact a:hover {
-  background: #08c;
-  color: #fff;
-}
+.contact a:hover { background: #08c; color: #fff; }
 
 /* =======================
    FOOTER
@@ -296,14 +255,9 @@ footer {
   font-size: 0.95rem;
 }
 
-footer a {
-  color: #0af;
-  margin: 0 0.5rem;
-}
+footer a { color: #0af; margin: 0 0.5rem; }
 
-footer a:hover {
-  text-decoration: underline;
-}
+footer a:hover { text-decoration: underline; }
 
 /* =======================
    RESPONSIVE
