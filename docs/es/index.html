@@ -390,7 +390,12 @@
   
       /* Móvil */
       @media (max-width: 767px) {
-        .menu-toggle { display: block; }
+        .menu-toggle { 
+          display: block; 
+          margin: 0.5rem auto; /* centrado horizontal con margen arriba/abajo */
+          align-self: center;   /* asegura centrado dentro de flex container */
+        }
+      
         nav .menu {
           display: flex;
           flex-direction: column;
@@ -405,8 +410,17 @@
           overflow: hidden;
           transition: transform 0.3s ease, opacity 0.3s ease;
         }
-        nav .menu.show { transform: scaleY(1); opacity: 1; }
-        .social-icons-container { position: static; justify-content: center; margin-bottom: 1rem; }
+      
+        nav .menu.show {
+          transform: scaleY(1);
+          opacity: 1;
+        }
+      
+        .social-icons-container {
+          position: static;
+          justify-content: center;
+          margin-bottom: 1rem;
+        }
       }
     </style>
   </header>
